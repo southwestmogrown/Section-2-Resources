@@ -11,6 +11,10 @@ app.use(express.json());
  *     Response (Text): "1.0.0"
  */
 
+app.get("/version", (req, res) => {
+  res.send("1.0.0");
+});
+
 /**
  *  Basic Phase 2 - Route param and JSON response
  *      Method: GET
@@ -27,6 +31,20 @@ app.use(express.json());
  *  Hint: Use your name, birth date and favorite movies (as strings in the code)
  *  combined with the id sent as a route parameter in the url
  */
+
+app.get("/viewers/:id", (req, res) => {
+  const id = req.params.id;
+
+  const user = {
+    id,
+    firstName: "Shane",
+    lastName: "Wilkey",
+    birthDate: "02/25/1982",
+    favoriteMovies: ["Empire Stikes Back", "O' Brother Where Art Thou"],
+  };
+
+  res.json(user);
+});
 
 /** Basic Phase 3 - Query params in URL
  *      Method: GET
@@ -45,6 +63,14 @@ app.use(express.json());
  *          message required
  *          message required
  */
+
+app.get("/info", (req, res) => {
+  if (req.query.message) {
+    res.send(req.query.message);
+  } else {
+    res.send("message required");
+  }
+});
 
 /**
  *  IMPORTANT: Scroll to the top for basic phases.
