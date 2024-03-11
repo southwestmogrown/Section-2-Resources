@@ -40,4 +40,15 @@ app.post("/create", (req, res) => {
   res.json(`Hi, my name is ${name}, and I am a ${title}`);
 });
 
+app.get("/users/:userId", (req, res) => {
+  const userId = req.params.userId;
+  const queryParams = req.query;
+
+  res.json({ queryParams, userId });
+});
+
+app.get("/query", (req, res) => {
+  res.json(req.query);
+});
+
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
