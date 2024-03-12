@@ -4,6 +4,13 @@ const app = express();
 
 app.use(express.json());
 
+// app.use((req, res, next) => {
+//   console.log("error test");
+//   const error = new Error("Credentials are incorrect");
+//   error.statusCode = 401;
+//   next(error);
+// });
+
 const printPath = (req, res, next) => {
   console.log(`path: ${req.path}`);
   next();
@@ -35,13 +42,10 @@ const checkUserInput3 = (req, res, next) => {
 };
 
 const errorHandler = (req, res, next) => {
-  if (!req.body.stuff) {
-    console.log("error test");
-    const error = "There was an error :(";
-    next(error);
-  } else {
-    next();
-  }
+  console.log("error test");
+  const error = new Error("Credentials are incorrect");
+  error.statusCode = 401;
+  next(error);
 };
 
 app.get(
@@ -55,11 +59,30 @@ app.get(
 );
 
 app.get("/some/real/long/url", (req, res) => {
-  res.send("hello from a long url");
+  throw new Error();
+  // res.send("hello from a long url");
+});
+
+app.use((req, res, next) => {
+  const notFoundErr = new Error(`${req.path} not found.`);
+  notFoundErr.statusCode = 404;
+  next(notFoundErr);
 });
 
 app.use((err, req, res, next) => {
-  res.send(err);
+  console.log(err.message);
+  const status = err.statusCode ?? 500;
+  res.status(status);
+  res.json({
+    message: err.message || "Something went wrong...",
+    status,
+  });
 });
+
+// app.use((err, req, res, next) => {
+//   const { message, statusCode } = err;
+//   console.log(message, statusCode);
+//   res.send({ message, statusCode });
+// });
 
 app.listen(5000, () => console.log(`Listening on port ${5000}...`));
