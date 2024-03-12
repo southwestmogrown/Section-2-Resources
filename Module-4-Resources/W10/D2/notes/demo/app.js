@@ -1,9 +1,11 @@
 const express = require("express");
 
+const demosRouter = require("./routes/demos");
 const app = express();
 
 app.use(express.json());
 
+app.use("/demos", demosRouter);
 // app.use((req, res, next) => {
 //   console.log("error test");
 //   const error = new Error("Credentials are incorrect");
