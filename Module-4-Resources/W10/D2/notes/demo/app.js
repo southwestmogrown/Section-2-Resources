@@ -1,8 +1,9 @@
 const express = require("express");
 
+require("dotenv").config();
+
 const demosRouter = require("./routes/demos");
 const app = express();
-
 app.use(express.json());
 
 app.use("/demos", demosRouter);
@@ -12,6 +13,7 @@ app.use("/demos", demosRouter);
 //   error.statusCode = 401;
 //   next(error);
 // });
+console.log(process.env.MESSAGE);
 
 const printPath = (req, res, next) => {
   console.log(`path: ${req.path}`);
@@ -87,4 +89,6 @@ app.use((err, req, res, next) => {
 //   res.send({ message, statusCode });
 // });
 
-app.listen(5000, () => console.log(`Listening on port ${5000}...`));
+app.listen(process.env.PORT, () =>
+  console.log(`Listening on port ${process.env.PORT}...`)
+);
