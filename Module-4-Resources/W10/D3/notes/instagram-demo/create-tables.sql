@@ -40,7 +40,7 @@ CREATE TABLE likes (
     post_id INTEGER,
     created_at DATE NOT NULL,
     updated_at DATE NOT NULL
-)
+);
 
 CREATE TABLE follows (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE follows (
     followee_id INTEGER,
     created_at DATE NOT NULL,
     updated_at DATE NOT NULL
-)
+);
 
 
 
