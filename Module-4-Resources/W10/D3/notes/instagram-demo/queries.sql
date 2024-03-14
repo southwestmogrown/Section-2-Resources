@@ -25,6 +25,10 @@
 -- DELETE FROM posts
 -- WHERE id = 3;
 
-UPDATE users
-SET username = 'swilkey'
-WHERE id = 1;
+-- UPDATE users
+-- SET username = 'swilkey'
+-- WHERE id = 1;
+
+select *
+from users
+join posts;
