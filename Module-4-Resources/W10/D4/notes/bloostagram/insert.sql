@@ -4,7 +4,7 @@ VALUES ("shanew", "shane", "wilkey", "shane@wilkey.com", "supersecretpassword", 
        ("b-rad", "brad", "simpson", "brad@simpson.com", "bradhasasecretpassword", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        ("brando", "brandon", "laursen", "branden@laursen.com", "brandohasasecretpassword", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        ("maicas", "maica", "santos", "maica@santos.com", "maicahasasecretpassword", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-
+       
 INSERT INTO images (image_url)
 VALUES ("www.image-url.com/images/1"),
        ("www.image-url.com/images/2"),
@@ -51,6 +51,7 @@ VALUES (1, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        (2, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        (1, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        (1, 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
 
 INSERT INTO albums (user_id, name)
 VALUES (1, 'album 1'),

@@ -1,3 +1,4 @@
+PRAGMA foreign_keys = ON;
 DROP TABLE IF EXISTS album_images;
 DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS likes;
