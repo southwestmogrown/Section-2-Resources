@@ -46,11 +46,21 @@
 
 -- select image_id + 1 from album_images;
 
-SELECT posts.caption AS pc, images.id AS imid, images.image_url AS imurl
-FROM posts
-JOIN images 
-ON posts.image_id = imid
-ORDER BY pc, imurl
-DESC
-LIMIT 4
-OFFSET 4;
+-- SELECT posts.caption AS pc, images.id AS imid, images.image_url AS imurl
+-- FROM posts
+-- JOIN images 
+-- ON posts.image_id = imid
+-- ORDER BY pc, imurl
+-- DESC
+-- LIMIT 4
+-- OFFSET 4;
+
+-- SELECT users.username AS UN, posts.title AS PT, comments.body AS CB, COUNT(likes.user_id) AS likes
+-- FROM users
+-- JOIN posts
+-- ON users.id = posts.user_id
+-- JOIN comments
+-- ON users.id = comments.user_id
+-- JOIN likes
+-- ON users.id = likes.user_id
+-- ORDER BY UN, CB, PT, likes;
