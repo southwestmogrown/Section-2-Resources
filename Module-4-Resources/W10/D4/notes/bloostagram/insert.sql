@@ -52,8 +52,6 @@ VALUES (1, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        (1, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        (1, 7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
--- TODO
--- Add insert for albums
 INSERT INTO albums (user_id, name)
 VALUES (1, 'album 1'),
        (1, 'album 2'),
@@ -61,7 +59,6 @@ VALUES (1, 'album 1'),
        (2, 'album 4'),
        (2, 'album 5'),
        (2, 'album 6');
-
 
 INSERT INTO album_images (album_id, image_id)
 VALUES (1, 1),
