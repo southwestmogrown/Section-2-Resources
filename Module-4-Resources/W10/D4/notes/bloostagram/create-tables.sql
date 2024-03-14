@@ -6,9 +6,6 @@ DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS users;
 
--- TODO 
--- Add foreign key constraints
-
 -- TODO
 -- Handle foreign key constraint errors
 
