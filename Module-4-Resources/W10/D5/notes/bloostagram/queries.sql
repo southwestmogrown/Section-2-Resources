@@ -83,5 +83,5 @@
 
 SELECT title, caption FROM posts
 WHERE user_id IN (
-    SELECT * FROM users
+    SELECT id FROM users
 );
