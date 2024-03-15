@@ -10,7 +10,7 @@ CREATE TABLE bands (
 );
 CREATE TABLE musicians (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  band_id INTEGER REFERENCES bands(id) NOT NULL,
+  band_id INTEGER NOT NULL,
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100)
 );
@@ -19,7 +19,3 @@ CREATE TABLE instruments (
   type VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE musician_instruments (
-  musician_id INTEGER REFERENCES musicians(id),
-  instument_id INTEGER REFERENCES instruments(id)
-);
