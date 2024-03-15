@@ -64,3 +64,24 @@
 -- JOIN likes
 -- ON users.id = likes.user_id
 -- ORDER BY UN, CB, PT, likes;
+
+-- SELECT * FROM posts;
+
+-- SELECT AVG(image_id) from posts;
+
+-- SELECT COUNT(*) FROM images;
+
+-- SELECT MIN(image_id) from posts;
+-- SELECT MAX(image_id) from posts;
+
+-- SELECT SUM(image_id) from posts;
+-- SELECT TOTAL(image_id) from posts;
+
+-- SELECT AVG(image_id) 
+-- FROM posts
+-- WHERE image_id BETWEEN 5 AND 10;
+
+SELECT title, caption FROM posts
+WHERE user_id IN (
+    SELECT * FROM users
+);
