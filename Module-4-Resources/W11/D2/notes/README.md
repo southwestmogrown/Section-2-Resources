@@ -22,6 +22,8 @@ Sequelize is an Object-Relational Mapping (ORM) library for Node.js.
 
 It allows you to interact with relational databases like SQLite3 and PostgreSQL using JavaScript/Node.js
 
+<a href="https://sequelize.org/">Sequelize Docs</a>
+
 ---
 
 ## Getting Started.
@@ -180,6 +182,12 @@ module.exports = {
 
 ---
 
+## Set up environment variables
+
+Create a `.env` file and add a `PORT` variable and `DB_FILE` variable
+
+---
+
 ## Let's try to run our migrations to make sure everything is setup correctly and to create our db
 
 - `npx dotenv sequelize db:migrate`
@@ -195,7 +203,8 @@ Steps to set up Sequelize
 4. Create a `.sequelizerc` file and add the boilerplate code
 5. Initialize sequelize (npx sequelize init)
 6. Replace boilerplate code in `config/database.js`
-7. Run initial migration to verify functionality
+7. Create `.env` file
+8. Run initial migration to verify functionality
 
 ---
 
