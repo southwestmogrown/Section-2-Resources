@@ -35,8 +35,14 @@ module.exports = {
           email: "john@doe.com",
           password: "johnspassword",
         },
+        {
+          firstName: "jane",
+          lastName: "Doe",
+          email: "john@doe.com",
+          password: "johnspassword",
+        },
       ],
-      {}
+      { validate: true }
     );
   },
 

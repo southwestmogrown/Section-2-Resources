@@ -16,14 +16,27 @@ module.exports = (sequelize, DataTypes) => {
       firstName: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          len: {
+            args: [2, 20],
+            msg: "firstName must be between 2 and 50 chars",
+          },
+        },
       },
       lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      username: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isEmail: true,
+        },
       },
       password: {
         type: DataTypes.STRING,

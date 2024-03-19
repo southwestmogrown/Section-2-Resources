@@ -217,7 +217,7 @@ Steps to set up Sequelize
 - For making changes to the DB STRUCTURE
 - Table names = PascalCased and Plural
   - Table: Users
-- Column name = snakeCased
+- Column name = camelCased
   - Column: firstName
 
 ---
@@ -239,8 +239,6 @@ _You can add -cli to the sequelize command, but not needed_
   - `npx sequelize migration:generate --name <create-name-of-table>`
 
 _Table name is singular in this command, sequelize handles pluralization_
-
-_An id and primary key are automatically created_
 
 ---
 
@@ -396,9 +394,9 @@ await Person.bulkCreate(
 ## Basic layout
 
 ```js
-    await <model>.bulkCreate({
+    await <model>.bulkCreate([{
         <seeders>
-    }, { validate: true })
+    }], { validate: true })
 ```
 
 ---
@@ -407,7 +405,7 @@ await Person.bulkCreate(
 
 ---
 
-## A statment that has helped some students in the past:
+## A statement that has helped some students in the past:
 
 All squares are rectangles, but not all rectangles are squares. Everything in our migrations goes into our model, but not everything in our model goes into migrations.
 
