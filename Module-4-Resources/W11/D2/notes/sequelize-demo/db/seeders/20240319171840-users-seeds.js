@@ -34,12 +34,14 @@ module.exports = {
           lastName: "Doe",
           email: "john@doe.com",
           password: "johnspassword",
+          username: "jdoe",
         },
         {
           firstName: "jane",
           lastName: "Doe",
           email: "john@doe.com",
           password: "johnspassword",
+          username: "jdoe2",
         },
       ],
       { validate: true }
