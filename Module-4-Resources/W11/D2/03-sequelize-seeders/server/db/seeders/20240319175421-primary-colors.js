@@ -1,6 +1,6 @@
 "use strict";
 
-const { User } = require("../models");
+const { Color } = require("../models");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -14,29 +14,19 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    // await queryInterface.bulkInsert(
-    //   "Users",
-    //   [
-    //     {
-    //       firstName: "John",
-    //       lastName: "Doe",
-    //       email: "john@doe.com",
-    //       password: "johnspassword",
-    //     },
-    //   ],
-    //   {}
-    // );
-
-    await User.bulkCreate(
+    await Color.bulkCreate(
       [
         {
-          firstName: "John",
-          lastName: "Doe",
-          email: "john@doe.com",
-          password: "johnspassword",
+          name: "red",
+        },
+        {
+          name: "blue",
+        },
+        {
+          name: "yellow",
         },
       ],
-      {}
+      { validate: true }
     );
   },
 
@@ -47,6 +37,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("Users", null, {});
+    await queryInterface.bulkDelete("Colors", null, {});
   },
 };
