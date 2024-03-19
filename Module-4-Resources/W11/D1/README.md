@@ -1,10 +1,40 @@
+<style>
+    .present {
+        text-align: left;
+    }
+</style>
+
+---
+
+###### tags: `Week 11` `W11D1`
+
+---
+
+\*\* Prior to lecture, create around 5000 seeders for a basic names table with first name and last name columns. I like to use the student's names, and just copy and paste them a bunch of times
+
+\*\* Also prior to lecture, create a set of unique seeders. I like to use the instructor's names
+
+---
+
 # Efficiency With SQL
 
-What make SQL inefficient?
+1 hr to read through readings on a/A Open
+
+First 3 sections of material listed under Additional Resources:
+
+1. Efficient SQL
+2. SQL Indexes
+3. Benchmark SQL Queries
+
+---
+
+## What make SQL inefficient?
 
 - Large data sets
   - w/o indexing SQL will check every single row
 - Too many connections to the db
+
+---
 
 What can we do to improve efficiency?
 
@@ -16,40 +46,82 @@ What can we do to improve efficiency?
 - Benchmarking
 - Search by unique columns
 
-What is the syntax for creating an index?
+---
+
+## What is the syntax for creating an index?
+
+---
 
 - `CREATE INDEX <index_name> ON <table_name> (<list_of_cols, ...>);`
 
-What is the naming convention for indexes
+---
+
+What is the naming convention for indexes?
 
 - table: users, cols: first_name, last_name
+
+---
+
 - `idx_users_first_name_last_name`
-- `CREATE INDEX idx_users_first_name_last_name ON users (first_name, last_name);`
 
-What is the time complexity of a query w/o an index?
+```sql
+CREATE INDEX idx_users_first_name_last_name
+ON users (first_name, last_name);
+```
 
-- O(n)
+---
 
-What about with an index?
+## What is the time complexity of a query w/o an index?
 
-- O(log n)
+---
 
-**Every time we add an index, all of our other operations (COULD) become more expensive!**
+# O(n)
 
-We want to make this more efficient, but before we start throwing indexes in there, we need to have a base of how long this query takes
+---
 
-How do we start a benchmark?
+## What about with an index?
 
-- .timer on
+---
+
+# O(log n)
+
+---
+
+## Every time we add an index, some of our other operations (COULD) become more expensive!
+
+---
+
+Create a data.sql with a basic names table with first name and last name cols
+\*\* Paste in the seeders from before
+
+```sql
+SELECT * FROM names WHERE first_name=<a name on the table>;
+```
+
+We want to make things more efficient, but before we start throwing indexes in there, we need to have a base of how long this query takes
+
+---
+
+## How do we start a benchmark?
+
+---
+
+# .timer on
+
+---
 
 The first time we run a query is the most expensive
 
 How do we check if a query is already using an index?
 
+---
+
 ```sql
 EXPLAIN QUERY PLAN
 <the query code>
 ```
+
+---
 
 What steps do we take to benchmark a query?
 
@@ -60,19 +132,39 @@ What steps do we take to benchmark a query?
 5. EXPLAIN QUERY PLAN again to confirm that the index is being used
 6. Run query again to get the new time
 
+---
+
 What is the difference between SCAN and SEARCH responses from EXPLAIN QUERY PLAN?
 
-SCAN - checking all records
-SEARCH - binary searching an index
+---
+
+SCAN
+
+- checking all records
+
+SEARCH
+
+- binary searching an index
+
+---
 
 Every time we add a UNIQUE constraint to a column, we are adding an index
 
 - This allows SQL to quickly identify if the UNIQUE constraint passes or fails
 
-What is an N+1 Query?
+---
 
-- This happens when we run an initial query, then iterate over those results and
-  and run an additional query on each result.
+## Take a 10 min break
+
+---
+
+# What is an N+1 Query?
+
+---
+
+An N+1 Query happens when we run an initial query, then iterate over those results and run an additional query on each result.
+
+---
 
 N+1:
 
@@ -97,34 +189,32 @@ router.get('/', (req, res, next) => {
 })
 ```
 
+---
+
 NOT N+1:
 
 ```js
-router.get('/:gameId(\\d+)', (req, res, next) => {
-    const sql = 'SELECT boardgames.name, boardgames.max_players, categories.category,
-                        reviews.content, users.username
-                        FROM boardgames
-                        JOIN categories
-                        ON (boardgames.category_id = categories.id)
-                        JOIN reviews
-                        ON (boardgames.id = reviews.game_id)
-                        JOIN users
-                        ON (reviews.user_id = users.id)
-                        WHERE boardgames.id = ?;'
-    const params = [req.params.gameId];
-    db.all(sql, params, (err, rows) => {
-        if (err) {
-            next(err)
-        } else {
-            res.json(rows)
-        }
-    })
-})
+router.get("/:gameId(\\d+)", (req, res, next) => {
+  const sql =
+    "SELECT boardgames.name, boardgames.max_players, categories.category, reviews.content, users.username FROM boardgames JOIN categories ON (boardgames.category_id = categories.id) JOIN reviews ON (boardgames.id = reviews.game_id) JOIN users ON (reviews.user_id = users.id) WHERE boardgames.id = ?;";
+  const params = [req.params.gameId];
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      next(err);
+    } else {
+      res.json(rows);
+    }
+  });
+});
 ```
 
-During your time here at a/A, don't worry about efficiency. Focus on getting your
-code to work, then you can go back and refactor.
+---
+
+During your time here at a/A, don't worry about efficiency. Focus on getting your code to work, then you can go back and refactor.
+
 **!! LAZY LOAD YOUR AGGREGATE DATA !!**
+
+---
 
 SQL Injection Attacks
 
@@ -153,10 +243,12 @@ router.post("/search", (req, res, next) => {
 // Settlers of Catan; DROP TABLE boardgames;
 ```
 
+---
+
 Biggest takeaways from today:
 
 - How to benchmark queries and how to recognize N+1 queries
 
-```
-** Spend the rest of the day allowing students to go through the homework
-```
+---
+
+## Spend the rest of the day going through the homework.

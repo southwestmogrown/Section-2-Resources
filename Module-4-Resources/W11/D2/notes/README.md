@@ -1,8 +1,41 @@
-# Getting Started With Sequelize
+<style>
+    .present {
+        text-align: left;
+    }
+</style>
 
-Starting with a basic server
+---
+
+###### tags: `Week 11` `W11D2`
+
+---
+
+# Week 11 Day 2
+
+Intro to Sequelize
+
+---
+
+## What is Sequelize?
+
+Sequelize is an Object-Relational Mapping (ORM) library for Node.js.
+
+It allows you to interact with relational databases like SQLite3 and PostgreSQL using JavaScript/Node.js
+
+---
+
+## Getting Started.
+
+This requires quite a bit of boilerplate code. It is important to know what this code does, but not necessary to know it line for line by heart.
+
+Start by initializing npm in a new folder
+
+---
+
+## Set up a basic server
 
 ```js
+// app.js
 const express = require("express");
 require("dotenv").config();
 const app = express();
@@ -13,37 +46,92 @@ const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${process.env.PORT}...`));
 ```
 
-Packages needed for set up that we have already seen
+---
+
+## Next install some packages we have seen before
 
 - `express`
 - `sqlite3`
 - `dotenv`
 
-Dev dependencies
+---
+
+## And some dev dependencies for ease of use
 
 - `nodemon` (not necessary, but useful)
 - `dotenv-cli` (needed to work with sequelize commands when connecting to DB)
 
-To start off, we have to install a couple packages
+---
+
+## Now for some new packages
 
 - `npm install sequelize`
-- `npm install sequelize-cli`
+- `npm install sequelize-cli` (allows us to work with sequelize from the command line)
 
-Then we initialize Sequelize
+---
+
+## Then we initialize Sequelize
 
 - `npx sequelize init`
 
 This command creates a bunch of folders and files for us
 
+Let's examine...
+
+---
+
 - We will be replacing the entirety of the config.json file
+
+```json
+// config.json
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }, ...
+}
+
+```
+
+---
+
 - We will not be touching the models/index.json file. This file bundles up all of the stuff that Sequelize needs and exports it as the db variable.
+
+```javascript
+// /models/index.js
+"use strict";
+
+const fs = require("fs");
+const path = require("path");
+const Sequelize = require("sequelize");
+const process = require("process");
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/../config/config.json")[env];
+const db = {};
+```
+
+---
+
+## Migrations, Models, & Seeders
 
 - The migrations file's job is to make changes to our DB
 - Seeders files are filled with our initial DB data
 - Model files are class representations of our tables
 
-```js
-// ** Create a .sequelizerc file and add to it:
+---
+
+## This is a bit messy, let's clean it up
+
+Delete all the files we just made and create a .sequelizerc file.
+
+Add the following:
+
+```javascript
+// .sequelizerc
 const path = require("path");
 
 module.exports = {
@@ -52,8 +140,20 @@ module.exports = {
   "seeders-path": path.resolve("db", "seeders"),
   "migrations-path": path.resolve("db", "migrations"),
 };
+```
 
-// ** Delete everything in the config/database.js file and replace with:
+---
+
+## Now run `npx sequelize init` again.
+
+Note that config now has a database.js file and models, migrations, and seeders have all been allocated to a new `db` directory.
+
+---
+
+## Replace everything in the config/database.js file with:
+
+```javascript
+// config/database.js
 module.exports = {
   development: {
     storage: process.env.DB_FILE, // location of DB file
@@ -67,29 +167,86 @@ module.exports = {
 };
 ```
 
+---
+
+### This defines the configuration for our database
+
 - storage: Tells Sequelize where our actual DB is
 - dialect: Tells Sequelize which RDBMS we are using
 - benchmark: Basically just turns .timer on by default
-- logQueryParameters: Allows us to actually see the values when we make changes to our DB
+- logQueryParameters: Allows us to see the values when we make changes to our DB
 - typeValidation: Helps us enforce data types on our tables
 - logging: Defaults to true and prints our SQL to the terminal
 
+---
+
+## Let's try to run our migrations to make sure everything is setup correctly and to create our db
+
+- `npx dotenv sequelize db:migrate`
+  - Runs initial migration and starts a .db file
+
+---
+
+Steps to set up Sequelize
+
+1. Initialize npm (npm init -y)
+2. Install server dependencies and stub out app
+3. Install Sequelize dependencies (sequelize, sequelize-cli)
+4. Create a `.sequelizerc` file and add the boilerplate code
+5. Initialize sequelize (npx sequelize init)
+6. Replace boilerplate code in `config/database.js`
+7. Run initial migration to verify functionality
+
+---
+
+# 15 min for Sequelize in Express SP
+
+---
+
 ## Migrations
 
-- For making changes to the DB structure
-- Table names = Capitalized and Plural
+- For making changes to the DB STRUCTURE
+- Table names = PascalCased and Plural
   - Table: Users
-- CLI commands: \*\* Can add -cli to the sequelize command, but not needed
-  - `npx sequelize migration:generate --name <create-name-of-table>`
-    - Generate a new migration file
-  - `npx dotenv sequelize db:migrate`
-    - Run all migration files that haven't been ran
-  - `npx dotenv sequelize db:migrate:undo`
-    - Rolls back the most recent migration
-  - `npx dotenv sequelize db:migrate:undo:all`
-    - Rolls back all migrations
+- Column name = snakeCased
+  - Column: firstName
 
-Important notes
+---
+
+## Interacting with the CLI
+
+- There are 2 types of commands:
+  - Commands that create files
+  - Commands that interact with the db
+    These require us to add "dotenv" to the command
+
+---
+
+## Interacting with migrations in the CLI
+
+_You can add -cli to the sequelize command, but not needed_
+
+- Generate a new migration file
+  - `npx sequelize migration:generate --name <create-name-of-table>`
+
+_Table name is singular in this command, sequelize handles pluralization_
+
+_An id and primary key are automatically created_
+
+---
+
+## Interacting with migrations in the CLI
+
+- Run all migration files that haven't been ran
+  - `npx dotenv sequelize db:migrate`
+- Rolls back the most recent migration
+  - `npx dotenv sequelize db:migrate:undo`
+- Rolls back all migrations
+  - `npx dotenv sequelize db:migrate:undo:all`
+
+---
+
+# Important notes
 
 - Anytime we are running a command to interact with our db, we need Sequelize to
   see our environment variables, so we have to add the "dotenv"
@@ -98,75 +255,92 @@ Important notes
 - Migrations don't only create/edit our tables, they also act as version control for our DB
 - All of our normal conditions like unique or not null are represented as key-value pairs in the column objects
 
-The Sequelize Meta table's job is to track the migration files that have been executed
+---
 
 ## Models
 
 - Class representations of each table, with built-in query methods
-- Model names = Capitalized and SINGULAR
+- Allow us to manipulate/validate data with plain JS before sending it to the database
+- Model names = PascalCased and SINGULAR
   - Model: User
 - CLI commands:
+
   - `npx sequelize model:generate --name <name> --attributes <table attributes>`
 
-Important notes
+- Will use this more often than `migration:generate`
+
+---
+
+## Important notes
 
 - We do not have to add an "id" attribute. Sequelize will add that for us for models that we generate.
 - We will be switching from snake_case to camelCase for our column names
 - Make sure that any changes we make to migrations, such as adding constraints, we need to add those changes to the model as well
 - Making changes to our model does not mean we need to run any additional commands
 
+---
+
+# 25 min for Sequelize Models SP
+
+---
+
 ## Seeders
 
 - For inserting starter data into tables
+- Generate a new seed file
+  - `npx sequelize seed:generate --name <name>`
+- Runs all seeders that haven't been ran
+  - `npx dotenv sequelize db:seed:all`
+- Rolls back the most recent seed file
+  - `npx dotenv sequelize db:seed:undo`
+- Rolls back all seeder files
+  - `npx dotenv sequelize db:seed:undo:all`
 
-- There are 2 types of commands:
-  - Commands that create files
-  - Commands that interact with the db
-    These require us to add "dotenv" to the command
-
-Now that we have created a table, we need to create a seeder file
-
-CLI commands:
-
-- `npx sequelize seed:generate --name <name>`
-- `npx dotenv sequelize db:seed:all`
-  - Runs all seeders that haven't been ran
-- `npx dotenv sequelize db:seed:undo`
-  - Rolls back the most recent seed file
-- `npx dotenv sequelize db:seed:undo:all`
-  - Rolls back all seeder files
+---
 
 ## Important notes
 
-The seeder bulkInsert method tests against table constraints, but not against
-the model constraints
+- The seeder bulkInsert method tests against table constraints, but not against the model constraints use Model.bulkCreate instead (must import model)
 
-queryInterface is an object built into Sequelize and has a ton of built-in methods
+- queryInterface is an object built into Sequelize and has a ton of built-in methods
 
-One thing that will help you out with Sequelize is envisioning the SQL that
-Sequelize will be creating
+- One thing that will help you out with Sequelize is envisioning the SQL that Sequelize will be creating
 
-The seederStorage property in our config/database.js file is what gives us the
-SequelizeData file in our DB
+- The seederStorage property in our `config/database.js` file is what gives us the SequelizeData file in our DB
 
-Database reset script:
+---
+
+## Database reset script:
+
+Handy for when making changes early on
 
 ```js
-    "dbreset": "npx dotenv sequelize db:seed:undo:all && npx dotenv sequelize db:migrate:undo:all && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all"
+"dbreset": "npx dotenv sequelize db:seed:undo:all && npx dotenv sequelize db:migrate:undo:all && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all"
 ```
 
-```
-    ** Look up Sequelize validators on Google
-        https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/#validators
-    ** Add some validators to the model
-```
+---
+
+# 20 min for Sequelize Seeders SP
+
+---
+
+** Look up Sequelize validators on Google
+https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/#validators
+** Add some validators to the model
+
+---
 
 If we want our seeders to check against our model validations, we have to take a couple extra steps
 
 We will be utilizing our model's built-in bulkCreate method
 
+---
+
+# Model.bulkCreate
+
+Instead of bulkInsert like below, we will replace with bulkCreate
+
 ```js
-// Instead of bulkInsert like below, we will replace with bulkCreate
 // Insert into People using queryInterface.bulkInsert:
 await queryInterface.bulkInsert(
   "People",
@@ -180,14 +354,21 @@ await queryInterface.bulkInsert(
   ],
   {}
 );
+```
 
-// First we need to import our model into the seed file:
+---
 
-// Insert into People using Person.bulkCreate:
+First we need to import our model into the seed file:
+
+```javascript
 const { Person } = require("../db/models");
+```
 
-// Then set up a bulkCreate statement
+---
 
+Then set up a bulkCreate statement
+
+```javascript
 await Person.bulkCreate(
   [
     {
@@ -197,18 +378,13 @@ await Person.bulkCreate(
   ],
   { validate: true }
 );
-
-// will throw an error from model-validation:
-await Person.bulkCreate(
-  [
-    {
-      name: "John Doe",
-      isBetaMember: "yes",
-    },
-  ],
-  { validate: true }
-);
 ```
+
+`validate: true` allows us to enforce model level validations
+
+---
+
+## Basic layout
 
 ```js
     await <model>.bulkCreate({
@@ -216,18 +392,74 @@ await Person.bulkCreate(
     }, { validate: true })
 ```
 
-**`bulkCreate` instead of `bulkInsert` is highly recommended**
+---
 
-```
-** A statment that has helped some students in the past:
-    All squares are rectangles, but not all rectangles are squares. Everything in our migrations goes into our model, but not everything in our model goes into migrations.
-```
+# `bulkCreate` instead of `bulkInsert` is highly recommended
+
+---
+
+## A statment that has helped some students in the past:
+
+All squares are rectangles, but not all rectangles are squares. Everything in our migrations goes into our model, but not everything in our model goes into migrations.
+
+---
+
+# 20 min for Validations and Constraints SP
+
+---
+
+## Using migrations for something other than creating tables
+
+Remember that migrations can serve as version control, allowing us to see what changes were made and when, and allowing us to quickly roll-back a change w/o taking the entire app down.
 
 If we change an existing migration file, the migration must be rolled back in order for the changes to take effect. This would wipe that table, causing significant loss of user data.
 
-We need to start by creating a new migration file
+---
 
-`npx sequelize migration:generate --name <descriptive name>`
+Start by creating a new migration file
+
+- `npx sequelize migration:generate --name <descriptive name>`
+
+Then write the up statement
+
+```javascript
+// new-migration.js
+async up(queryInterface, Sequelize) {
+await queryInterface.addColumn(<tableName>, <newColName>, {
+      type: Sequelize.<DATATYPE>,
+      allowNull: false,
+      defaultValue: <defaultValue>,
+    });
+//...
+```
+
+---
+
+## What goes up, must come down
+
+Write the down command
+
+```javascript
+// new-migration.js
+// ...
+async down(queryInterface, Sequelize) {await queryInterface.removeColumn(<tableName, <newColName>);
+//...
+```
+
+---
+
+## defaultValue
+
 If we set allowNull: false to the new column, we run into an error
 
 We can get around this error by setting a defaultValue property
+
+---
+
+# 30 min for Research Add/Remove/Modify Column Migrations SP
+
+---
+
+# Break out for LP
+
+---
