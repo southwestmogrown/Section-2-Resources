@@ -17,19 +17,19 @@ module.exports = {
 
     await Image.bulkCreate(
       [
-        { name: "www.image-url.com/images/1" },
-        { name: "www.image-url.com/images/2" },
-        { name: "www.image-url.com/images/3" },
-        { name: "www.image-url.com/images/4" },
-        { name: "www.image-url.com/images/5" },
-        { name: "www.image-url.com/images/6" },
-        { name: "www.image-url.com/images/7" },
-        { name: "www.image-url.com/images/8" },
-        { name: "www.image-url.com/images/9" },
-        { name: "www.image-url.com/images/10" },
-        { name: "www.image-url.com/images/11" },
-        { name: "www.image-url.com/images/12" },
-        { name: "www.image-url.com/images/13" },
+        { image_url: "www.image-url.com/images/1" },
+        { image_url: "www.image-url.com/images/2" },
+        { image_url: "www.image-url.com/images/3" },
+        { image_url: "www.image-url.com/images/4" },
+        { image_url: "www.image-url.com/images/5" },
+        { image_url: "www.image-url.com/images/6" },
+        { image_url: "www.image-url.com/images/7" },
+        { image_url: "www.image-url.com/images/8" },
+        { image_url: "www.image-url.com/images/9" },
+        { image_url: "www.image-url.com/images/10" },
+        { image_url: "www.image-url.com/images/11" },
+        { image_url: "www.image-url.com/images/12" },
+        { image_url: "www.image-url.com/images/13" },
       ],
       { validate: true }
     );
