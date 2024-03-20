@@ -10,18 +10,22 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       albumId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
       image_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("Current_TIMESTAMP"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("Current_TIMESTAMP"),
       },
     });
   },

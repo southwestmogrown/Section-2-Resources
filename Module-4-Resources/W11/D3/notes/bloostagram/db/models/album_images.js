@@ -13,8 +13,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   AlbumImage.init(
     {
-      albumId: DataTypes.INTEGER,
-      image_id: DataTypes.INTEGER,
+      albumId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      image_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       sequelize,
