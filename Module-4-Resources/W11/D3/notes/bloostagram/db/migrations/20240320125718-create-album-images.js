@@ -12,10 +12,12 @@ module.exports = {
       albumId: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        references: { model: "Albums" },
       },
       imageId: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        references: { model: "Images" },
       },
       createdAt: {
         allowNull: false,

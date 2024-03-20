@@ -1,7 +1,7 @@
 const express = require("express");
 const { Op } = require("sequelize");
 
-const { User } = require("../db/models");
+const { User, Post } = require("../db/models");
 
 const router = express.Router();
 
@@ -9,6 +9,16 @@ router.get("/", async (req, res) => {
   const allUsers = await User.findAll();
 
   res.json(allUsers);
+});
+
+router.get("/relationships/:userId", async (req, res) => {
+  const userId = req.params.userId;
+
+  const user = await User.findByPk(userId, {
+    include: { model: Post },
+  });
+
+  res.json(user);
 });
 
 router.get("/attributes", async (req, res) => {
