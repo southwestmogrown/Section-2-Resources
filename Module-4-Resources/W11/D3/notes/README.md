@@ -207,6 +207,10 @@ await <instance>.save()
 
 ---
 
+# 20 minutes for Sequelize Insert SP
+
+---
+
 ## Updating/Deleting in Sequelize
 
 There are multiple ways to Update:
@@ -221,8 +225,8 @@ This requires a where
 
 Major preference and what we will be using
 
-- Instance.update()
-- Instance.set()
+- Instance.columnName = newValue
+- Instance.set({ columnName: newValue})
 - Instance.save() (must save with these methods)
 
 We want to make sure that we are not accidentally updating our properties to undefined
