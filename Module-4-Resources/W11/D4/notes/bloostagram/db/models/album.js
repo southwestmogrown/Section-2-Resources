@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "albumId",
         otherKey: "imageId",
       });
+
+      Album.belongsTo(models.User, { foreignKey: "userId" });
     }
   }
   Album.init(
