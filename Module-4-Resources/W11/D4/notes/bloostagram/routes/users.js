@@ -138,4 +138,44 @@ router.delete("/:id", async (req, res) => {
   res.json({ message: `Successfully deleted user with id ${id}` });
 });
 
+// Getter method
+
+router.get("/getter-method/:userId", async (req, res) => {
+  let user = await User.findByPk(req.params.userId);
+  // console.log(user);
+  let posts = await user.getPosts();
+  // let comments = await user.getComment();
+  // console.log(posts);
+
+  res.json({
+    user,
+    posts,
+  });
+});
+
+// Create Method
+
+router.get("/create-method/:userId", async (req, res) => {
+  let user = await User.findByPk(req.params.userId);
+  let post = await user.createPost({
+    title: "New Post",
+    caption: "Good Times",
+    imageId: 3,
+  });
+
+  res.json({
+    message: "Successfully created post",
+    post: post,
+  });
+});
+
+// Check create method
+router.get("/posts/:userId", async (req, res) => {
+  let user = await User.findByPk(req.params.userId, {
+    include: Post,
+  });
+
+  res.json(user);
+});
+
 module.exports = router;

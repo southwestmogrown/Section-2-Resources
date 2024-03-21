@@ -49,4 +49,25 @@ router.get("/eager/:id", async (req, res) => {
   res.json(album);
 });
 
+router.post("/add-image/:albumId", async (req, res) => {
+  const album = await Album.findByPk(req.params.albumId);
+
+  // console.log(album);
+
+  const { imageUrl } = req.body;
+
+  const newImage = await Image.create({ imageUrl });
+
+  await album.addImage(newImage);
+
+  const images = await album.getImages();
+
+  const payload = {
+    ...album.toJSON(),
+    images,
+  };
+
+  res.json({ album, images });
+});
+
 module.exports = router;
