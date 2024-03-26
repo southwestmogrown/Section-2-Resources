@@ -5,6 +5,8 @@ const usersRouter = require("./routes/users");
 const albumsRouter = require("./routes/albums");
 const aggregatesRouter = require("./routes/aggregates");
 
+const { Post } = require("./db/models");
+
 const app = express();
 
 app.use(express.json());
@@ -31,6 +33,30 @@ app.use(express.json());
 app.use("/users", usersRouter);
 app.use("/albums", albumsRouter);
 app.use("/aggregates", aggregatesRouter);
+
+app.get("/pagination", async (req, res) => {
+  let { page, size } = req.query;
+
+  if (!page) page = 1;
+  if (!size) size = 5;
+
+  page = parseInt(page);
+  size = parseInt(size);
+
+  const pagination = {};
+
+  if (size > 0 && page > 0) {
+    (pagination.limit = size), (pagination.offset = size * (page - 1));
+  }
+
+  const allPosts = await Post.findAll({
+    // limit: size,
+    // offset: size * (page - 1),
+    ...pagination,
+  });
+
+  res.json(allPosts);
+});
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${process.env.PORT}...`));
