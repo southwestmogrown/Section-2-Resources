@@ -1,11 +1,12 @@
 const express = require("express");
+const { Op } = require("sequelize");
 require("dotenv").config();
 
 const usersRouter = require("./routes/users");
 const albumsRouter = require("./routes/albums");
 const aggregatesRouter = require("./routes/aggregates");
 
-const { Post } = require("./db/models");
+const { Post, Comment } = require("./db/models");
 
 const app = express();
 
@@ -56,6 +57,38 @@ app.get("/pagination", async (req, res) => {
   });
 
   res.json(allPosts);
+});
+
+app.get("/queries", async (req, res) => {
+  const { titleToMatch, maxImageId, userIdToFind } = req.query;
+
+  const queryObj = {
+    where: {},
+    include: [],
+  };
+
+  if (titleToMatch) {
+    queryObj.where.title = { [Op.substring]: titleToMatch };
+  }
+
+  if (maxImageId) {
+    queryObj.where.imageId = { [Op.gte]: maxImageId };
+  }
+
+  // if (userIdToFind) {
+  // }
+  queryObj.include.push({
+    model: Comment,
+    // where: {
+    //   userId: parseInt(userIdToFind),
+    // },
+  });
+
+  const posts = await Post.findAll({
+    ...queryObj,
+  });
+
+  res.json(posts);
 });
 
 const port = process.env.PORT;
