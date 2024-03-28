@@ -5,11 +5,11 @@ can affect how a different malicious application can access the server.
 
 ## Set up
 
-`cd` into the __malicious-app__ folder.
+`cd` into the **malicious-app** folder.
 
 Run `npm install` and start the server by running `npm run dev`.
 
-Then open another terminal and `cd` into the __real-app__ folder.
+Then open another terminal and `cd` into the **real-app** folder.
 
 Run `npm install`, `npm run migrate`, and `npm run seed`. Start the server by
 running `npm run dev`.
@@ -17,7 +17,7 @@ running `npm run dev`.
 ## Ambiguous CORS Policy
 
 Take a look at the CORS policy defined in line 26 of the
-__real-app/backend/app.js__ file.
+**real-app/backend/app.js** file.
 
 This CORS policy sets the `Access-Control-Allow-Origin` header to `"*"`. This is
 the most ambiguous CORS policy and allows any origin to make requests to the
@@ -58,10 +58,10 @@ ambiguous.
 ## Less-Ambiguous CORS Policy
 
 Comment out the previous CORS policy defined from lines 27-29 of the
-__real-app/backend/app.js__ file.
+**real-app/backend/app.js** file.
 
 Comment in the next CORS policy defined from lines 32-35 of the
-__real-app/backend/app.js__ file.
+**real-app/backend/app.js** file.
 
 This CORS policy is a dynamic policy on the server. The syntax is a Regular
 Expression which is a way to pattern match strings. This particular pattern
@@ -101,10 +101,10 @@ real application's server.
 ## Specific CORS Policy
 
 Comment out the previous CORS policy defined from lines 32-35 of the
-__real-app/backend/app.js__ file.
+**real-app/backend/app.js** file.
 
 Comment in the next CORS policy defined from lines 38-41 of the
-__real-app/backend/app.js__ file.
+**real-app/backend/app.js** file.
 
 This CORS policy is a specific policy on the server. The CORS policy will set
 the `Access-Control-Allow-Origin` header to `"http://localhost:5001"` which is
@@ -137,7 +137,7 @@ the same credentials (`DemoUser` for the `Username` field and `password` for the
 
 Open up the Developer Tool's Console to see more specifics on the error. The
 Chrome browser did not allow you to make the request because the CORS policy was
-ambiguous.
+specific.
 
 Since the CORS policy only matches the real application URL and **NOT** the
 malicious application URL, the browser will allow **NOT** allow the malicious
