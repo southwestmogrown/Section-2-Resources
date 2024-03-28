@@ -91,7 +91,30 @@ app.get("/queries", async (req, res) => {
   res.json(posts);
 });
 
-app.get("/scopes", async (req, res) => {});
+// app.get("/scopes", async (req, res) => {
+//   const users = await User.findAll(); // only use defaultScope
+
+//   res.json(users);
+// });
+
+app.get("/scopes", async (req, res) => {
+  const users = await User.scope("onlyNameAndId").findAll(); // only use the named scope
+
+  res.json(users);
+});
+
+app.get("/scopes/:userId", async (req, res) => {
+  const user = await User.scope([
+    "defaultScope",
+    { method: ["includePosts", req.params.userId] },
+  ]).findOne({
+    where: {
+      id: req.params.userId,
+    },
+  });
+
+  res.json(user);
+});
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${process.env.PORT}...`));
