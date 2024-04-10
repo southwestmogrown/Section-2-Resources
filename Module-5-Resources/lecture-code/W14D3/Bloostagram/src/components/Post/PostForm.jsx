@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Post.css";
 
@@ -6,10 +6,31 @@ function PostForm({ users, postData }) {
   const [title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [author, setAuthor] = useState("");
+  const [validationErrors, setValidationErrors] = useState({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  useEffect(() => {
+    const errors = {};
+    if (title.length === 0) errors.title = "Please enter a post title!";
+    if (imageUrl.length === 0) errors.imageUrl = "Please provide an image url!";
+    if (author.length === 0) errors.author = "Please select an author!";
+
+    setValidationErrors(errors);
+  }, [title, imageUrl, author]);
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setHasSubmitted(true);
+
+    if (Object.values(validationErrors).length) {
+      return alert(`The following errors were found:
+      ${validationErrors.title ? "* " + validationErrors.title : ""}
+      ${validationErrors.imageUrl ? "* " + validationErrors.imageUrl : ""}
+      ${validationErrors.author ? "* " + validationErrors.author : ""}
+      `);
+    }
 
     const selectedUser = users.find((user) => user.name === author);
 
@@ -42,6 +63,10 @@ function PostForm({ users, postData }) {
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
+        <div style={{ color: "red" }}>
+          {/* {validationErrors.title} */}
+          {hasSubmitted && validationErrors.title}
+        </div>
         <div className="input-container">
           <label htmlFor="image">Image URL</label>
           <input
@@ -50,6 +75,10 @@ function PostForm({ users, postData }) {
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
           />
+        </div>
+        <div style={{ color: "red" }}>
+          {/* {validationErrors.imageUrl} */}
+          {hasSubmitted && validationErrors.imageUrl}
         </div>
         <div className="input-container">
           <label htmlFor="author">Author</label>
@@ -65,6 +94,10 @@ function PostForm({ users, postData }) {
               <option key={index}>{user.name}</option>
             ))}
           </select>
+        </div>
+        <div style={{ color: "red" }}>
+          {/* {validationErrors.author} */}
+          {hasSubmitted && validationErrors.author}
         </div>
         <button className="submit-btn">Submit</button>
       </form>
