@@ -2,10 +2,10 @@ import Post from "../Post";
 
 import "./Feed.css";
 
-function Feed({ data }) {
+function Feed({ postData }) {
   return (
     <div className="feed-container">
-      {data.map((post) => {
+      {postData.map((post) => {
         return <Post key={post.id} postData={post} />;
       })}
     </div>

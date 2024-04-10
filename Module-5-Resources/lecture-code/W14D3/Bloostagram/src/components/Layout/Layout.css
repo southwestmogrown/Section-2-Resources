@@ -1,5 +1,5 @@
 .navbar-links-container {
-  width: 1200px;
+  width: auto;
   height: 90px;
   display: flex;
   flex-direction: row;

@@ -16,7 +16,7 @@ function Layout() {
         </div>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/posts">Feed</NavLink>
-        <NavLink to="/posts/new">New Post</NavLink>
+        <NavLink to="/new">New Post</NavLink>
       </nav>
       <Outlet />
     </div>

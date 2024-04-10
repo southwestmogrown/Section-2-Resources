@@ -17,15 +17,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "posts",
-        element: <Feed data={seedData} />,
+        element: <Feed postData={seedData} />,
       },
       {
         path: "posts/:postId",
         element: <PostDetails postData={seedData} />,
       },
       {
-        path: "posts/new",
-        element: <PostForm users={users} />,
+        path: "new",
+        element: <PostForm users={users} postData={seedData} />,
       },
     ],
   },
