@@ -1,7 +1,7 @@
+import UseEffectTest from "./UseEffectTest";
+
 function App() {
-  return (
-    <h1>Hello App</h1>
-  );
+  return <UseEffectTest />;
 }
 
 export default App;
