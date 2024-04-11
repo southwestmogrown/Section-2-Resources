@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Post.css";
+import { useThemeContext } from "../../context/ThemeContext";
 
 function PostForm({ users, postData }) {
   const [title, setTitle] = useState("");
@@ -8,6 +9,7 @@ function PostForm({ users, postData }) {
   const [author, setAuthor] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const { theme } = useThemeContext();
 
   useEffect(() => {
     const errors = {};
@@ -52,8 +54,8 @@ function PostForm({ users, postData }) {
   };
 
   return (
-    <div className="form-container">
-      <form className="post-form" onSubmit={(e) => handleSubmit(e)}>
+    <div className={`form-container ${theme}`}>
+      <form className={`post-form ${theme}`} onSubmit={(e) => handleSubmit(e)}>
         <div className="input-container">
           <label htmlFor="title">Title</label>
           <input

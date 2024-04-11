@@ -1,16 +1,19 @@
 import { useNavigate } from "react-router-dom";
 
+import { useThemeContext } from "../../context/ThemeContext";
+
 import "./Post.css";
 
 function Post({ postData }) {
   const { id, title, author, image, date } = postData;
   const navigate = useNavigate();
+  const { theme } = useThemeContext();
 
   const handleClick = () => {
     navigate(`/posts/${id}`);
   };
   return (
-    <div className={`post-container`} onClick={handleClick}>
+    <div className={`post-container ${theme}`} onClick={handleClick}>
       <div className="post-heading">
         <div className="user-info">
           <img

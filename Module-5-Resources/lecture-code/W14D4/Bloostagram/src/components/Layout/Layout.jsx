@@ -2,11 +2,13 @@ import { Outlet, NavLink } from "react-router-dom";
 
 import "./Layout.css";
 import Switch from "../Switch";
+import { useThemeContext } from "../../context/ThemeContext";
 
 function Layout() {
+  const { theme } = useThemeContext();
   return (
     <div>
-      <nav className={`navbar-links-container`}>
+      <nav className={`navbar-links-container ${theme}`}>
         <div className="navbar-subcontainer">
           <img
             className="navbar-logo"
