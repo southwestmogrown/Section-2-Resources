@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-import HoroscopeProvider from "./context/HoroscopeContext";
+import { HoroscopeContext } from "./context/HoroscopeContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HoroscopeProvider>
+    <HoroscopeContext.Provider value={{ sign: "Leo" }}>
       <App />
-    </HoroscopeProvider>
+    </HoroscopeContext.Provider>
   </React.StrictMode>
 );

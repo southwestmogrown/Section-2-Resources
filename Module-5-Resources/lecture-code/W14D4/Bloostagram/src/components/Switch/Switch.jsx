@@ -31,3 +31,6 @@ function Switch() {
 }
 
 export default Switch;
+
+// This component was build using Switch reading external resource
+// https://upmostly.com/tutorials/build-a-react-switch-toggle-component
