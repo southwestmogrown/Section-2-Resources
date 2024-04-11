@@ -4,7 +4,6 @@ import "./App.css";
 import Landing from "./components/Landing/Landing";
 import Feed from "./components/Feed/Feed";
 import Layout from "./components/Layout/Layout";
-import seedData, { users } from "../seed-data";
 import { PostDetails, PostForm } from "./components/Post";
 
 const router = createBrowserRouter([
@@ -17,15 +16,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "posts",
-        element: <Feed postData={seedData} />,
+        element: <Feed />,
       },
       {
         path: "posts/:postId",
-        element: <PostDetails postData={seedData} />,
+        element: <PostDetails />,
       },
       {
         path: "new",
-        element: <PostForm users={users} postData={seedData} />,
+        element: <PostForm />,
       },
     ],
   },

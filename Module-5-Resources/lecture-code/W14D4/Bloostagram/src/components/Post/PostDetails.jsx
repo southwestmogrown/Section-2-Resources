@@ -1,12 +1,14 @@
 import { Link, useParams } from "react-router-dom";
 
+import { usePostsContext } from "../../context/PostsContext";
 import Post from "./Post";
 import Comment from "../Comment";
 
-function PostDetails({ postData }) {
+function PostDetails() {
   const { postId } = useParams();
+  const { posts } = usePostsContext();
 
-  const post = postData.find((post) => post.id === +postId);
+  const post = posts.find((post) => post.id === +postId);
   console.log(post);
 
   return (

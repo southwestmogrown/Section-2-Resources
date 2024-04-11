@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Post.css";
 import { useThemeContext } from "../../context/ThemeContext";
+import { usePostsContext } from "../../context/PostsContext";
 
-function PostForm({ users, postData }) {
+function PostForm() {
   const [title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [author, setAuthor] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { theme } = useThemeContext();
+  const { posts, setPosts, users } = usePostsContext();
 
   useEffect(() => {
     const errors = {};
@@ -37,9 +39,9 @@ function PostForm({ users, postData }) {
     const selectedUser = users.find((user) => user.name === author);
 
     const newPost = {
-      id: postData.length + 1,
+      id: posts.length + 1,
       title,
-      imageUrl,
+      image: imageUrl,
       author: selectedUser,
       date: new Date(),
       comments: [],
@@ -47,6 +49,7 @@ function PostForm({ users, postData }) {
     };
 
     console.log(newPost);
+    setPosts((prevPosts) => [...prevPosts, newPost]);
     setTitle("");
     setImageUrl("");
     setAuthor("");
