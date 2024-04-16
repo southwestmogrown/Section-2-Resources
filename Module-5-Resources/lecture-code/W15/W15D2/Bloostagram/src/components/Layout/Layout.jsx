@@ -16,10 +16,10 @@ function Layout() {
         <div className="navbar-subcontainer">
           <img
             className="navbar-logo"
-            src="https://res.cloudinary.com/app-academy4/image/upload/v1647291502/Patchstagram/patch_hd_riobbp.png"
-            alt="cute-kitty-image"
+            src="https://res.cloudinary.com/ddxcued5s/image/upload/v1709692225/bloostagram-logo-update.png"
+            alt="cute-doggo-image"
           />
-          <h2 className="navbar-title">Patchstagram</h2>
+          <h2 className="navbar-title">Bloostagram</h2>
         </div>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/posts">Feed</NavLink>

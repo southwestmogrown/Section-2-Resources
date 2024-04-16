@@ -1,26 +1,29 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import "./Post.css";
 import { useThemeContext } from "../../context/ThemeContext";
-import { usePostsContext } from "../../context/PostsContext";
+import { createPost } from "../../../store/postsReducer";
+// import { usePostsContext } from "../../context/PostsContext";
 
 function PostForm() {
   const [title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [author, setAuthor] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { theme } = useThemeContext();
-  const { posts, setPosts, users } = usePostsContext();
+  // const {  setPosts} = usePostsContext();
+  const dispatch = useDispatch();
+  const posts = useSelector(state => state.postsState.posts);
+  const sessionUser = useSelector(state => state.usersState.sessionUser)
 
   useEffect(() => {
     const errors = {};
     if (title.length === 0) errors.title = "Please enter a post title!";
     if (imageUrl.length === 0) errors.imageUrl = "Please provide an image url!";
-    if (author.length === 0) errors.author = "Please select an author!";
 
     setValidationErrors(errors);
-  }, [title, imageUrl, author]);
+  }, [title, imageUrl]);
 
   const navigate = useNavigate();
 
@@ -32,27 +35,25 @@ function PostForm() {
       return alert(`The following errors were found:
       ${validationErrors.title ? "* " + validationErrors.title : ""}
       ${validationErrors.imageUrl ? "* " + validationErrors.imageUrl : ""}
-      ${validationErrors.author ? "* " + validationErrors.author : ""}
       `);
     }
 
-    const selectedUser = users.find((user) => user.name === author);
+    // const selectedUser = users.find((user) => user.name === author);
 
     const newPost = {
       id: posts.length + 1,
       title,
       image: imageUrl,
-      author: selectedUser,
+      author: sessionUser,
       date: new Date(),
       comments: [],
       likes: 0,
     };
 
     console.log(newPost);
-    setPosts((prevPosts) => [...prevPosts, newPost]);
+    dispatch(createPost(newPost))
     setTitle("");
     setImageUrl("");
-    setAuthor("");
     navigate("/posts");
   };
 
@@ -84,25 +85,6 @@ function PostForm() {
         <div style={{ color: "red" }}>
           {/* {validationErrors.imageUrl} */}
           {hasSubmitted && validationErrors.imageUrl}
-        </div>
-        <div className="input-container">
-          <label htmlFor="author">Author</label>
-          <select
-            name="author"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-          >
-            <option value="" disabled>
-              Select an author...
-            </option>
-            {users.map((user, index) => (
-              <option key={index}>{user.name}</option>
-            ))}
-          </select>
-        </div>
-        <div style={{ color: "red" }}>
-          {/* {validationErrors.author} */}
-          {hasSubmitted && validationErrors.author}
         </div>
         <button className="submit-btn">Submit</button>
       </form>

@@ -1,26 +1,22 @@
-import { createStore, applyMiddleware, compose, combineReducers } from "redux";
-import usersReducer from "./usersReducer";
-import postsReducer from "./postsReducer";
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import fruitReducer from './fruitReducer';
+import articleReducer from './articleReducer';
+
 /*
 `combineReducers` combines all the reducer functions into one big reducer
 function, which is typically called `rootReducer`. This is the most important
 part of this file. You will add your reducers here to work with your various
 components.
 */
-
-// create rootReducer here:
-// Your code here
-
 const rootReducer = combineReducers({
-  usersState: usersReducer,
-  postsState: postsReducer
+  fruitState: fruitReducer,
+  articleState: articleReducer
 });
 
 /*
 `enhancer` allows you to alter the store and add functionality such as Redux
 DevTools and logger (similar to morgan) middleware.
 */
-
 let enhancer;
 
 /*
@@ -34,13 +30,10 @@ provides access to environment variables through `import.meta.env`.
 window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ along with the Chrome extension for
 Redux DevTools will set up your Redux DevTools in the browser.
 */
-
 if (import.meta.env.MODE !== "production") {
   const logger = (await import("redux-logger")).default;
-
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
   enhancer = composeEnhancers(applyMiddleware(logger));
 }
 
@@ -53,9 +46,8 @@ the Redux store access to the full application.
   from the server. (This is not important right now.)
 `enhancer`: see above.
 */
-
-const configureStore = (preLoadedState) => {
-  return createStore(rootReducer, preLoadedState, enhancer);
+const configureStore = (preloadedState) => {
+  return createStore(rootReducer, preloadedState, enhancer);
 };
 
 export default configureStore;
