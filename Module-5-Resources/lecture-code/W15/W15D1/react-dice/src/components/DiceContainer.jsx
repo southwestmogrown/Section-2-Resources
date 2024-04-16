@@ -91,6 +91,7 @@ function DiceContainer() {
       setTimeout(() => {
         setRolling(false);
       }, 1000);
+
   }, [rolling])
 
 
