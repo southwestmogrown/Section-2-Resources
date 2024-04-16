@@ -1,11 +1,15 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 
 import "./Layout.css";
 import Switch from "../Switch";
 import { useThemeContext } from "../../context/ThemeContext";
+import { logoutUser } from "../../../store/usersReducer";
 
 function Layout() {
   const { theme } = useThemeContext();
+  const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.usersState.sessionUser);
   return (
     <div>
       <nav className={`navbar-links-container ${theme}`}>
@@ -20,6 +24,14 @@ function Layout() {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/posts">Feed</NavLink>
         <NavLink to="/new">New Post</NavLink>
+        <div>
+          <span>CurrentUser: </span>
+          { sessionUser
+            ? <span>{ sessionUser.username }</span>
+            :  <Navigate to="/" /> 
+          }
+        </div>
+        <button onClick={() =>  dispatch(logoutUser())}>Logout</button>
         <Switch />
       </nav>
 
