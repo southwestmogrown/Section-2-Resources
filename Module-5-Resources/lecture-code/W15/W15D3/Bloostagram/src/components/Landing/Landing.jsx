@@ -1,24 +1,30 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 
 import "./Landing.css";
-import { useState } from "react";
-import {  loginUser } from "../../../store/usersReducer";
+import { useEffect, useState } from "react";
+import { getAllUsers, loginUser } from "../../../store/usersReducer";
 
 function Landing() {
-  const [currentUser, setCurrentUser] = useState('')
+  const [currentUser, setCurrentUser] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const users = useSelector(state => state.usersState.users);
-  console.log(users)
+  const users = useSelector((state) => state.usersState.users);
+  // console.log(users);
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const selectedUser = users.find(person => person.username === currentUser);
+    const selectedUser = users.find(
+      (person) => person.username === currentUser
+    );
     dispatch(loginUser(selectedUser));
-    setCurrentUser('');
-    navigate('/posts')
-  }
+    setCurrentUser("");
+    navigate("/posts");
+  };
 
   return (
     <div className="landing-container">

@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
+import { thunk } from "redux-thunk";
 import usersReducer from "./usersReducer";
 import postsReducer from "./postsReducer";
 /*
@@ -13,7 +14,7 @@ components.
 
 const rootReducer = combineReducers({
   usersState: usersReducer,
-  postsState: postsReducer
+  postsState: postsReducer,
 });
 
 /*
@@ -41,7 +42,9 @@ if (import.meta.env.MODE !== "production") {
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  enhancer = composeEnhancers(applyMiddleware(logger));
+  enhancer = composeEnhancers(applyMiddleware(thunk, logger));
+} else {
+  enhancer = applyMiddleware(thunk);
 }
 
 /*

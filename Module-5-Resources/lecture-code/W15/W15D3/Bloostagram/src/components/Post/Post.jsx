@@ -6,6 +6,8 @@ import "./Post.css";
 
 function Post({ postData }) {
   const { id, title, author, image, date } = postData;
+
+  // console.log("POST DATA", postData);
   const navigate = useNavigate();
   const { theme } = useThemeContext();
 
@@ -17,13 +19,13 @@ function Post({ postData }) {
       <div className="post-heading">
         <div className="user-info">
           <img
-            src={author.profile}
+            src={author?.profile}
             alt="placeholder profile pic"
             className="profile-image"
           />
-          <h2>{author.username}</h2>
+          <h2>{author?.username}</h2>
         </div>
-        <h2>{date.toDateString()}</h2>
+        <h2>{date}</h2>
       </div>
       <div className="post-body">
         <h2>{title}</h2>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import "./Post.css";
 import { useThemeContext } from "../../context/ThemeContext";
-import { createPost } from "../../../store/postsReducer";
+import { createAPost } from "../../../store/postsReducer";
 // import { usePostsContext } from "../../context/PostsContext";
 
 function PostForm() {
@@ -14,8 +14,8 @@ function PostForm() {
   const { theme } = useThemeContext();
   // const {  setPosts} = usePostsContext();
   const dispatch = useDispatch();
-  const posts = useSelector(state => state.postsState.posts);
-  const sessionUser = useSelector(state => state.usersState.sessionUser)
+  const posts = useSelector((state) => state.postsState.posts);
+  const sessionUser = useSelector((state) => state.usersState.sessionUser);
 
   useEffect(() => {
     const errors = {};
@@ -44,14 +44,14 @@ function PostForm() {
       id: posts.length + 1,
       title,
       image: imageUrl,
-      author: sessionUser,
+      authorId: sessionUser.id,
       date: new Date(),
       comments: [],
       likes: 0,
     };
 
     console.log(newPost);
-    dispatch(createPost(newPost))
+    dispatch(createAPost(newPost));
     setTitle("");
     setImageUrl("");
     navigate("/posts");
