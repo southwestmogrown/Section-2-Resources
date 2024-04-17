@@ -1,12 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 
-import { usePostsContext } from "../../context/PostsContext";
+// import { usePostsContext } from "../../context/PostsContext";
 import Post from "./Post";
 import Comment from "../Comment";
+import { useSelector } from "react-redux";
 
 function PostDetails() {
   const { postId } = useParams();
-  const { posts } = usePostsContext();
+  const posts = useSelector((state) => state.postsState.posts);
 
   const post = posts.find((post) => post.id === +postId);
   console.log(post);
@@ -25,7 +26,7 @@ function PostDetails() {
             Like
           </button>
         </div>
-        {post.comments.map((comment, i) => {
+        {post.Comments.map((comment, i) => {
           return <Comment key={i} comment={comment} />;
         })}
       </div>
