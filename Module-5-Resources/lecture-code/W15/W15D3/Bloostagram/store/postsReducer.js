@@ -22,8 +22,10 @@ export const getAllPosts = () => async (dispatch) => {
 
   if (res.ok) {
     const posts = await res.json();
-    // console.log(posts);
-    dispatch(loadPosts(posts));
+    const normalizedPosts = {};
+    posts.forEach((post) => (normalizedPosts[post.id] = post));
+    // console.log(normalizedPosts);
+    dispatch(loadPosts(normalizedPosts));
     return posts;
   } else {
     const errors = await res.json();
@@ -48,16 +50,15 @@ export const createAPost = (newPostData) => async (dispatch) => {
   } else {
     const errors = await res.json();
     console.log(errors);
-    return errors;
   }
 };
 
-const initialState = { posts: [] };
+const initialState = { posts: {} };
 
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_POSTS: {
-      return { ...state, posts: [...action.posts] };
+      return { ...state, posts: { ...action.posts } };
     }
     case ADD_POST: {
       return { ...state, posts: [...state.posts, action.post] };

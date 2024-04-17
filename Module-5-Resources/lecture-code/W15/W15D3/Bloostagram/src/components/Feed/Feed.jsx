@@ -7,7 +7,8 @@ import "./Feed.css";
 import { getAllPosts } from "../../../store/postsReducer";
 
 function Feed() {
-  const posts = useSelector((state) => state.postsState.posts);
+  const normalizedPosts = useSelector((state) => state.postsState.posts);
+  const posts = Object.values(normalizedPosts);
   // console.log(posts);
   const dispatch = useDispatch();
   // const { posts } = usePostsContext();
