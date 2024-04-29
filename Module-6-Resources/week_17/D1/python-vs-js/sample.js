@@ -55,7 +55,7 @@ class Book {
 const book = new Book("Two Towers", "Lord of the Rings", "JRR Tolkien");
 console.log(book.getInformation());
 
-// Example #7 Routes (can't test)
-app.get("/item/:id", (req, res) => {
-  res.send(`<h1>Item ID: ${req.params.id}</h1>`);
-});
+// // Example #7 Routes (can't test)
+// app.get("/item/:id", (req, res) => {
+//   res.send(`<h1>Item ID: ${req.params.id}</h1>`);
+// });
