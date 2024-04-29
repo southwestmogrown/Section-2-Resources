@@ -52,7 +52,7 @@ class Book {
   }
 }
 
-book = new Book("Two Towers", "Lord of the Rings", "JRR Tolkien");
+const book = new Book("Two Towers", "Lord of the Rings", "JRR Tolkien");
 console.log(book.getInformation());
 
 // Example #7 Routes (can't test)
