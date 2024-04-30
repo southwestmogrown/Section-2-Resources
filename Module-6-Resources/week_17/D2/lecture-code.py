@@ -212,7 +212,7 @@ str = "heLlo woRld, how aRe you"
 
 # print(long_division(100, 30))
 
-x = 15
+# x = 15
 
 # x -= 10 # x = x - 10 = 5
 # x += 10 # x = x + 10 = 25
@@ -220,7 +220,96 @@ x = 15
 # x /= 10 # x = x / 10 = 1.5
 # x //= 10 # x = x // 10 = 1
 # x **= 10 # x = x ** 10 = 576650390625
-x %= 10 # x = x % 10 = 5
+# x %= 10 # x = x % 10 = 5
 
 
-print(x)
+# print(x)
+
+# x = 0
+# y = 0
+
+# print(x == y)
+# print(x is y)
+
+# name = "Shane Wilkey"
+# # full_name = "Shane Wilkey"
+
+# first_name = "Shane "
+# last_name = "Wilkey"
+
+# full_name = first_name + last_name
+
+# print(name, full_name)
+
+# print(name == full_name)
+# print(name is full_name)
+
+# my_int = 4
+# my_float = 4.0
+ 
+# # check if the values are the same
+# print(my_int == my_float)  # True
+ 
+# # check if the values are the same and check type
+# print(my_int == my_float and isinstance(my_int, float))  # False
+
+
+
+
+# lst1 = [1,2,3,4,5]
+# lst2 = [1,2,3,4,5]
+
+# # print(lst1 == lst2) # True
+# # print(lst1 is lst2) # False
+
+# print(id(lst1)) # 139757527005696
+# # print(id(lst2))
+
+# lst3 = lst1
+
+
+# print(id(lst3)) # 139757527005696
+
+# lst3[0] = 5000
+
+# print(lst1) # [5000, 2, 3, 4, 5]
+# print(lst3) # [5000, 2, 3, 4, 5]
+
+# a = []
+ 
+# if a is not None:
+#     print("a is not None")  # prints "a is not None"
+# else:
+#     print("a is None")
+
+# a = 1
+# print(a == True)  # don't do this, in Python 1 is equal in value to True
+# print(a is True)
+
+# print([] == [])  # True
+# print([] is [])  # False
+# a = []
+# b = a
+# print(a is b)    # True
+# b.append(5)
+# print(a)         # [5]
+
+# a = 5
+# b = 5
+# print(a is b) # True
+ 
+# c = "hey"
+# d = "hey"
+# print(c is d) # True
+
+# f = 'fizz'
+# b = 'buzz'
+# fb = f + b
+# fzbz = 'fizzbuzz'
+
+# print(fb)
+# print(fzbz)
+# print("equivalence: ", fb == fzbz)
+# print("identity: ", fb is fzbz)
+# print("id equivalence: ", id(fb) == id(fzbz))
+# print("id identity: ", id(fb) is id(fzbz))

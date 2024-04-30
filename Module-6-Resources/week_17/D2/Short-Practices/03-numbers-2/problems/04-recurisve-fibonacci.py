@@ -1,6 +1,10 @@
 # Create a function that returns the Fibonacci sequence of the given value.
 
 # Write your function here.
+def recursive_fib(n):
+  if n < 2:
+    return n
+  return recursive_fib(n-1) + recursive_fib(n-2)
 
 
 print(recursive_fib(1))     #> 1
