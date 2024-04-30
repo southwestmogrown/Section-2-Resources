@@ -1,3 +1,5 @@
+# Booleans
+
 # print(type(True)) # <class 'bool'>
 
 true = True
@@ -86,18 +88,117 @@ false = False
 # print(True and not False) # True
 # print(True or False) # True
 
-a = 6
-b = 20
+# a = 6
+# b = 20
 
-if b < a:
-  print("b is less than a")
-elif b == a:
-  print("b is equal to a")
-else:
-  print("b is greater than a")
-  if a == 6:
-    print('6 is a good number')
-  elif b == 20:
-    print("Doesn't matter, we won't get here")
-  else:
-    print("won't get here")
+# if b < a:
+#   print("b is less than a")
+# elif b == a:
+#   print("b is equal to a")
+# else:
+#   print("b is greater than a")
+#   if a == 6:
+#     print('6 is a good number')
+#   elif b == 20:
+#     print("Doesn't matter, we won't get here")
+#   else:
+#     print("won't get here")
+
+# Strings
+
+# my_str = 'hello'
+# my_str_double_quotes = "hello with doubles"
+# my_str_with_apostrophes = "What's up"
+# my_str_as_quotation = "'Hey how\'s it going'"
+# my_bad_string = "\"Howdy\""
+# my_multi_line_str = """Multi
+# Line
+# String"""
+
+# print(my_str)
+# print(my_str_double_quotes)
+# print(my_str_with_apostrophes)
+# print(my_str_as_quotation)
+# print(my_bad_string)
+# print(my_multi_line_str)
+
+"""
+Multi-line comment
+"""
+
+def multi():
+  """
+  Docstring for multi, returns None
+  """
+  return None
+
+# print(help(multi))
+# teachers = ["Shane", "Briana"]
+
+# print("There are {0} teachers in Section 2".format(len(teachers))) # old school way
+# print(f"There are {len(teachers)} teachers in Section 2") # new way as of 3.6
+
+# a = "a"
+# b = "b"
+# an = "an"
+
+# print(b + an*2 + a)
+# print(b + an*9 + a + " batman")
+
+# print("$1" + ",000"*2)
+
+food = "Spaghetti"
+
+# print(food[0]) # S
+# print(food[4]) # h
+
+# print(food[-1]) # i
+# print(food[-8]) # p
+# print(food[-9]) # S
+# # print(food[-10]) # IndexError: string index out of range
+# print(food[10]) # IndexError: string index out of range
+
+# print(food[4:9]) # hetti
+# print(food[0:-5]) # Spag
+# print(food[-5:-3]) # he
+
+# print(food[0:9:2]) # Sahti
+
+# print(food[8:0:-1]) # ittehgap
+
+# print(food[-1::-1]) # ittehgapS
+
+# print(help(str.count))
+
+# print(";asdkljf;ldskfjieieeijfkddsmnajkejejdlvijdlaesmnkdoijmel".count('e')) # 7
+# print(";asdkljf;ldskfjieieeijfkddsmnajkejejdlvijdlaesmnkdoijmel".count('asdk')) # 1
+# print(help(str.index))
+
+# print("The quick brown fox jumps over the lazy dog".index("fox")) # 16
+# print("The quick brown fox jumps over the lazy dog".index("e")) # 2
+# print("The quick brown fox jumps over the lazy dog".index("o")) # 12
+# print(len("The quick brown fox jumps over the lazy dog"))
+# print("hello".index('z')) # ValueError: substring not found
+
+# print(help(str.split))
+
+# print("It is a very nice day in the Ozarks".split("v"))
+# print(dir(str))
+
+# print(" ".join(["i", "really", "like", "python"])) # i really like python
+# print(", ".join(["i", "really", "like", "python"])) # i, really, like, python
+# print("".join(["i", "really", "like", "python"])) # ireallylikepython
+
+str = "heLlo woRld, how aRe you"
+
+# print(str.upper())
+# print(str.lower())
+# print(str.title())
+# print(str.capitalize())
+
+# import string # alternative to str.title()
+
+# print(string.capwords(str))
+
+
+# print(help(str.capitalize))
