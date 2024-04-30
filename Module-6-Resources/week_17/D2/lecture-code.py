@@ -387,3 +387,67 @@ items = ['a', 'b', 'c', 'd']
 #       break
 #   except:
 #       print("try again")
+
+
+# def is_even(num):
+#   return num % 2 == 0
+ 
+# print(is_even(5)) # False
+# print(is_even(2)) # True
+
+# is_even = lambda num: num % 2 == 0 # not a desirable way to use lambda functions
+ 
+# print(is_even(8)) # True
+
+# ls = [1,2,3,4,5]
+
+# squared_ls = list(map(lambda x: x ** 2, ls))
+
+# print(squared_ls)
+
+# is_even = 3
+
+# print(is_even(5)) # TypeError: 'int' object is not callable
+
+# y = 0
+
+# def make_a_five():
+#   y = 5 # this is not the same 'y' as the globally defined 'y'
+#   return y
+
+# x = make_a_five()
+# print(y)
+# print(x)
+
+# def make_a_six():
+#   global y # this is the globally defined 'y'
+#   y = 6
+#   return y
+
+# z = make_a_six()
+# print(z)
+# print(y)
+
+# if True:
+#   x = 10
+
+# print(x)
+
+# def no_w():
+#   w = 10
+#   return w
+
+# print(w) # NameError: name 'w' is not defined
+
+# fruits = ["banana", "apple", "kiwi"]
+# print(fruits)  # ["banana", "apple", "kiwi"]
+
+ls1 = [1,2,3,4,5]
+ls2 = [6,7,8,9]
+
+ls2.extend(ls1)
+# ls1.remove(8)
+print(ls2)
+ls2.sort()
+
+print(ls2)
