@@ -202,3 +202,25 @@ str = "heLlo woRld, how aRe you"
 
 
 # print(help(str.capitalize))
+
+# Numbers
+
+# print(27.85 // 5)
+
+# def long_division(num, div):
+#   return num // div, num % div
+
+# print(long_division(100, 30))
+
+x = 15
+
+# x -= 10 # x = x - 10 = 5
+# x += 10 # x = x + 10 = 25
+# x *= 10 # x = x * 10 = 150
+# x /= 10 # x = x / 10 = 1.5
+# x //= 10 # x = x // 10 = 1
+# x **= 10 # x = x ** 10 = 576650390625
+x %= 10 # x = x % 10 = 5
+
+
+print(x)
