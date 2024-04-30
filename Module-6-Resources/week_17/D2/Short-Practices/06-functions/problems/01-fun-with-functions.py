@@ -6,11 +6,13 @@
 # Please follow the steps outlined below.
 
 # STEP 1 - Write a function named `welcome` that prints a welcome message
-
+def welcome():
+  print("Welcome to the program!")
 # Step 2 - Write a function named `calc_sum` that
 #   - takes in two numbers and
 #   - returns their sum
-
+def calc_sum(n1, n2):
+  return n1 + n2
 # DO NOT EDIT - The guts of the program
 welcome()
 print(calc_sum(1,2), 'is 3?', calc_sum(1,2) == 3)

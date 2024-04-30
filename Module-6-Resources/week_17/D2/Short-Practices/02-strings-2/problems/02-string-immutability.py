@@ -3,3 +3,7 @@
 
 # Write your function here.
 
+s = 'string'
+s[0] = 'a'
+
+print(s)

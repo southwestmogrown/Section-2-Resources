@@ -447,7 +447,7 @@ ls2 = [6,7,8,9]
 
 ls2.extend(ls1)
 # ls1.remove(8)
-print(ls2)
+
 ls2.sort()
 
 print(ls2)

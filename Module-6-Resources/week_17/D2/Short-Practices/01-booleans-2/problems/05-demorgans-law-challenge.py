@@ -2,7 +2,8 @@
 # statement.
 
 # Write your function here.
-
+def de_morgans_law(a1, a2):
+    return not (a1 and a2)
 
 print(de_morgans_law(True, True)) # False
 print(de_morgans_law(True, False)) # True

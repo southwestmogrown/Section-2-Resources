@@ -13,6 +13,12 @@ count = 0
 total = 0
 
 # STEP 2: Write the while loop
+while total < 1_000_000:
+  count += 1
+  if total == 0:
+    total = 0.01
+    continue
+  total *= 2
 
 
 print('Double', count, 'times')

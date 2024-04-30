@@ -3,7 +3,8 @@
 # string.
 
 # Write your function here.
-
+def char_count(s1, s2):
+  return s2.count(s1)
 
 print(char_count("a", "App Academy"))         #> 1
 print(char_count("c", "Chamber of Secrets"))  #> 1

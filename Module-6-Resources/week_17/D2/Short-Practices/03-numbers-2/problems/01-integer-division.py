@@ -2,7 +2,8 @@
 # the second value.
 
 # Write your function here.
-
+def integer_division(n1, n2):
+    return n1 // n2
 
 print(integer_division(5.0, 2))     #> 2.0
 print(integer_division(10, 10))     #> 1

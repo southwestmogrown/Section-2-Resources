@@ -2,7 +2,8 @@
 # of the name is an "n", return `True`, otherwise return `False`.
 
 # Write your function here.
-
+def is_last_character_n(n):
+    return n[-1] == 'n'
 
 print(is_last_character_n("Aiden"))  #> True
 print(is_last_character_n("Piet"))   #> False

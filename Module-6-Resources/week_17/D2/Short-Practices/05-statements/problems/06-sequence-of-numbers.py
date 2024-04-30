@@ -15,6 +15,20 @@
 
 # Write your function here.
 # There are hints after the print statements
+def seq_of_numbers(s):
+  s += ' '
+  i = 0
+  curr_count = 1
+  res = ""
+  while i < len(s) - 1:
+    if s[i] != s[i+1]:
+      res = res + str(curr_count) + s[i]
+      curr_count = 1
+    else:
+      curr_count += 1
+    i += 1
+  return res
+    
 
 
 print(seq_of_numbers("1211"))

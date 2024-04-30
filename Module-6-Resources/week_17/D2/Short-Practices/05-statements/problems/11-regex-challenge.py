@@ -15,8 +15,14 @@
 # If the zip code matches, return the zip code. If not, return an error text message.
 
 # Write your solution here.
+import re
 def valid_zip_code(zip):
-    pass
+    pattern = "\d{5}(-\d{4})?$"
+    is_valid = re.search(pattern, zip)
+    if is_valid:
+        return zip
+    else:
+        return "The zip code you entered is invalid"
 
 zip1 = '47243'
 zip2 = '23128-'

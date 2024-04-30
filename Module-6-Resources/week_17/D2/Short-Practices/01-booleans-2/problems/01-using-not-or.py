@@ -3,9 +3,8 @@
 # arguments.
 
 # Write your function here.
-def not_or(val1, val2):
-  return not val1 or val2
-
+def not_or(b1, b2):
+    return not b1 or b2
 
 print(not_or(True, False))    #> False
 print(not_or(True, True))     #> True
