@@ -255,6 +255,7 @@ str = "heLlo woRld, how aRe you"
 
 
 
+# Identity vs Equality/Operators
 
 # lst1 = [1,2,3,4,5]
 # lst2 = [1,2,3,4,5]
@@ -313,3 +314,76 @@ str = "heLlo woRld, how aRe you"
 # print("identity: ", fb is fzbz)
 # print("id equivalence: ", id(fb) == id(fzbz))
 # print("id identity: ", id(fb) is id(fzbz))
+
+# i = 0
+# while i < 5:
+#     print(f"{i}. Hello, world.")
+#     i += 1
+ 
+# print("You've printed 5 times. Goodbye.")
+
+
+# i = 0
+# while True:
+#     print(f"{i}. Hello, world.")
+#     if i < 4:
+#         i += 1
+#         continue
+#     print("You've printed 5 times. Goodbye.")
+#     break
+
+items = ['a', 'b', 'c', 'd']
+
+# # for banana in items:
+# #   print(banana)
+# #   print(items.index(banana))
+
+# for i in range(1,4,2):
+#   print(items[i])
+
+# print(dict(enumerate(items)))
+
+# for idx, el in enumerate(items):
+#     print(idx, el)
+#     # el = 5 # does not mutate
+#     items[idx] = 5 # does mutate
+
+# print(items)
+
+# hello = 'hello'
+
+# print("a" in items)
+# print("A" in items)
+
+# print('hel' in hello)
+
+# prompt = True
+
+# while prompt is not None:
+#   prompt = input("Give me a number!!!!! ")
+#   if prompt == 0:
+#     break
+#   try:
+#     prompt = int(prompt)
+#     # x = y
+#   except ValueError as error:
+#     # print(error)
+#     print("That's not a number!")
+#   else:
+#     if prompt > 10:
+#       print('10 is too large of a number')
+#       continue
+#     print(f"{prompt} is a good number")
+#   finally:
+#     prompt = None
+  
+
+# print(int('a'))
+
+# while True:
+#   try:
+#       num = int(input("say a number "))
+#       print(num)
+#       break
+#   except:
+#       print("try again")
