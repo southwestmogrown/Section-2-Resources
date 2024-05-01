@@ -252,4 +252,66 @@ nums = {1,2,3,4,5,6,7,8,9,10}
 # print(odds - nums) # odds.difference(nums)
 # print(nums - odds) # nums.difference(odds)
 
-print(nums ^ odds) # nums.symmetric_difference(odds) == (str1 - str2) | (str2 - str1)
+# print(nums ^ odds) # nums.symmetric_difference(odds) == (str1 - str2) | (str2 - str1)
+
+# names = ["JAMES", "julie", "Ana", "Ria"]
+# sorted_names = sorted(names)
+# print(sorted_names)
+ 
+# # ensure a case-insensitive sort with the `.lower` string method 
+# # and sort in reverse order
+# sorted_names = sorted(names, key=str.lower, reverse=True)
+# print(sorted_names)
+# print(names is sorted_names)
+
+ls1 = [True, False, True, False, True, False, True]
+ls2 = [False, False, False, False]
+ls3 = [True, True, True, True]
+ls4 = []
+
+# print(all(ls1)) # False
+# print(all(ls2)) # False
+# print(all(ls3)) # True
+# print(all(ls4)) # True
+
+# print(any(ls1)) # True
+# print(any(ls2)) # False
+# print(any(ls3)) # True
+# print(any(ls4)) # False
+
+# scores = [90, 86, 75, 91, 62, 99, 88, 90]
+
+# only_as = filter(lambda num: num >= 90, scores)
+# print(only_as)        # <filter object at 0x10546ad30>
+# print(list(only_as))  # [90, 91, 99, 90]
+
+# def get_grade(num):
+#     if (num >= 90):
+#         return "A"
+#     elif (num <90 and num >= 80):
+#         return "B"
+#     elif (num < 80 and num >= 70):
+#         return "C"
+#     elif (num < 70 and num >= 60):
+#         return "D"
+#     else:
+#         return "F"
+    
+
+# scores = [90, 86, 75, 91, 62, 99, 88, 90]
+# print(map(get_grade, scores))  # <map object at 0x106faffa0>
+# grades = list(map(get_grade, scores))
+# print(grades)                  # ['A', 'B', 'C', 'A', 'D', 'A', 'B', 'A']
+ 
+
+scores = [90, 86, 75, 91, 62, 99, 88, 90, 100] # extra score won't get added to the zip object
+grades = ["A", "B", "C", "A", "D", "A", "B", "A"]
+
+combined = zip(scores, grades)
+# combined = zip(grades, scores)
+combined_list = list(combined)
+combined_dict = dict(combined_list)
+print(combined)       # <zip object at 0x1023a9600>
+print(combined_list)  # [(90, 'A'), (86, 'B'), (75, 'C'), (91, 'A'), (62, 'D'), (99, 'A'), (88, 'B'), (90, 'A')]
+print(combined_dict)  # {90: 'A', 86: 'B', 75: 'C', 91: 'A', 62: 'D', 99: 'A', 88: 'B'}
+
