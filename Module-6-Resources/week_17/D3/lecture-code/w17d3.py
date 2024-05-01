@@ -100,4 +100,37 @@ sorted_fruits = tuple(sorted(fruits))
 # print(fruits)
 # print(sorted_fruits)
 
-print(fruits[1:4:2]) # ('avocado', 'orange')
+# print(fruits[1:4:2]) # ('avocado', 'orange')
+
+# Range
+
+# range = list(range(0, 10, 2)) # [0, 2, 4, 6, 8]
+
+# print(range)
+
+# for idx in range(10, -1, -1):
+#   print(idx)
+
+# for idx in range(len(fruits)): # 0,1,2,3
+#   print(fruits[idx])
+
+# for idx in range(len(fruits)-1, -1, -1):
+#   print(fruits[idx])
+
+# squared_nums = []
+
+# for num in range(-100, 101, 3):
+#   squared_nums.append(num ** 2)
+
+# print(squared_nums)
+
+items = ['a', 'b', 'c']
+ 
+enumerated_items = enumerate(items)
+print(enumerated_items) # <enumerate object at 0x7f443e30bf00>
+ 
+enumerated_list = list(enumerated_items)
+print(enumerated_list) # [(0, 'a'), (1, 'b'), (2, 'c')]
+ 
+for i, element in enumerated_list:
+    print(i, element) # 0 a => 1 b => 2 c

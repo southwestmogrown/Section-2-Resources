@@ -6,6 +6,11 @@
 # <= `length`.)
 
 # Write your function here.
+def fill_tuple(tup, val, length):
+  lst = []
+  for x in tup:
+    lst.append(x + (val,)  * (length - len(x)) )
+  return tuple(lst)
 
 print(fill_tuple(((58, 1, 5), (0, 3), (45, ), (24, 23)), 2, 3))    #> ((58, 1, 5), (0, 3, 2), (45, 2, 2), (24, 23, 2))
 print(fill_tuple(((1, ), (5, 7), (55, 22), (80, 52, 20)), 5, 4))   #> ((1, 5, 5, 5), (5, 7, 5, 5), (55, 22, 5, 5), (80, 52, 20, 5))
