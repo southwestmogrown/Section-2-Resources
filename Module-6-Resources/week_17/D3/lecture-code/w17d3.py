@@ -180,10 +180,76 @@ my_dict = { "name": "Shane", "age": 42, "role": "Section 2 Lead Instructor"}
 # print(my_dict.get("name"))
 # print(my_dict.get("one", None))
 # print(my_dict.get("banana", "Nope"))
-my_dict["hobby"] = "Plays Guitar"
-print(my_dict)
-my_dict["hobby"] = "Plays Drums"
-print(my_dict)
+# my_dict["hobby"] = "Plays Guitar"
+# print(my_dict)
+# my_dict["hobby"] = "Plays Drums"
+# print(my_dict)
 
-del my_dict["hobby"]
-print(my_dict)
+# del my_dict["hobby"]
+# print(my_dict)
+
+# Args and Kwargs
+
+# *: single splat - **: double splat
+
+
+new_dict = { **my_dict }
+ls = [1,2,3]
+new_ls = [ *ls ]
+
+# print(new_dict == my_dict) # True
+# print(new_dict is my_dict) # False
+# print(new_ls == ls) # True
+# print(new_ls is ls) # False
+
+# def print_args_and_kwargs(*args, **kwargs):
+#   print('args: ', args)
+#   print("kwargs: ", kwargs)
+
+# print_args_and_kwargs(1,2,3,4,5,6, key="value", random="sdlkjfsa;dlkfjdlk 203u3lkjsa", test=6)
+
+# def print_tuple(*tup, key):
+#   print(tup)
+#   print(key)
+#   # print(key2)
+
+# print_tuple(1232,2,3,543,43, key='something', key2="value2")
+
+# def print_objs(a, b, *args, **kwargs):
+#   print(a)
+#   print(b)
+#   print(args)
+#   print(kwargs)
+
+# print_objs("hello", "world", 12,3,4,6,43,2,4,56, banana="banana", orange="orange")
+# new_set = {} # this will be a dictionary
+# new_set = set()
+# set_with_elements = { 1, "hello", None }
+
+# print(type(new_set))
+# print(type(set_with_elements))
+
+# set1 = {1,2,1,2,1,2,3,4,3,4,3,4,5,4,5,6,5,6,7,6,7,8,7,8,9,0,8,}
+# set2 = set('Hello')
+# set3 = set([1,2,3,3,3,4,5,4,4,4,6,7,5,4,7])
+# my_dict = {"hello": "value", "goodbye": "value"}
+# print(set(my_dict))    # {'goodbye', 'hello'}
+
+
+# print(set1)
+# print(set2)
+# print(set3)
+
+odds = {1,3,5,7,9,11,13,15,17,19}
+nums = {1,2,3,4,5,6,7,8,9,10}
+
+# print(odds | nums) # all elements in odds OR nums
+# print(odds.union(nums)) 
+
+# print(odds & nums) # all elements in odds AND nums
+# print(odds.intersection(nums))
+
+# print(odds - nums) # odds.difference(nums)
+# print(nums - odds) # nums.difference(odds)
+
+print(nums ^ odds) # nums.symmetric_difference(odds) == (str1 - str2) | (str2 - str1)
