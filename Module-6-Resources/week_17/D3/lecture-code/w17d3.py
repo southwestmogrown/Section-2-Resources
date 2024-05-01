@@ -1,3 +1,4 @@
+from pprint import pprint
 # Lists
 empty_lst = []
 str_lst = list("banana")
@@ -124,13 +125,65 @@ sorted_fruits = tuple(sorted(fruits))
 
 # print(squared_nums)
 
-items = ['a', 'b', 'c']
+# items = ['a', 'b', 'c']
  
-enumerated_items = enumerate(items)
-print(enumerated_items) # <enumerate object at 0x7f443e30bf00>
+# enumerated_items = enumerate(items)
+# print(enumerated_items) # <enumerate object at 0x7f443e30bf00>
  
-enumerated_list = list(enumerated_items)
-print(enumerated_list) # [(0, 'a'), (1, 'b'), (2, 'c')]
+# enumerated_list = list(enumerated_items)
+# print(enumerated_list) # [(0, 'a'), (1, 'b'), (2, 'c')]
  
-for i, element in enumerated_list:
-    print(i, element) # 0 a => 1 b => 2 c
+# for i, element in enumerated_list:
+#     print(i, element) # 0 a => 1 b => 2 c
+
+# Dictionaries
+
+# const pojo = {
+#   name: "shane",
+#   age: 42
+# }
+
+def factorial(n):
+  fact = 1
+  for num in range(1, n + 1):
+    fact *= num
+  return fact
+
+crazy_dict = {
+  None: 'none',
+  True: False,
+  ("goat", 8): "tuple",
+  "string": lambda x : x,
+  factorial: 'factorial',
+  1004: 'integer',
+  "obj": {1: 2, 3: 4}
+}
+
+# print(crazy_dict['obj'])
+
+# print(crazy_dict.string)
+
+# print(dir(dict))
+# keys = list(crazy_dict.keys())
+# values = list(crazy_dict.values())
+# items = list(crazy_dict.items())
+# pprint(keys)
+# pprint(values)
+# pprint(items)
+
+my_dict = { "name": "Shane", "age": 42, "role": "Section 2 Lead Instructor"}
+
+# pprint(my_dict)
+# print(my_dict["age"])
+# print(my_dict.name) # AttributeError: 'dict' object has no attribute 'name'
+# print(my_dict["none"]) # KeyError: 'none'
+# print(my_dict.get("name"))
+# print(my_dict.get("one", None))
+# print(my_dict.get("banana", "Nope"))
+my_dict["hobby"] = "Plays Guitar"
+print(my_dict)
+my_dict["hobby"] = "Plays Drums"
+print(my_dict)
+
+del my_dict["hobby"]
+print(my_dict)
