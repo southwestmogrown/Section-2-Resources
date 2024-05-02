@@ -304,14 +304,47 @@ ls4 = []
 # print(grades)                  # ['A', 'B', 'C', 'A', 'D', 'A', 'B', 'A']
  
 
-scores = [90, 86, 75, 91, 62, 99, 88, 90, 100] # extra score won't get added to the zip object
-grades = ["A", "B", "C", "A", "D", "A", "B", "A"]
+# scores = [90, 86, 75, 91, 62, 99, 88, 90, 100] # extra score won't get added to the zip object
+# grades = ["A", "B", "C", "A", "D", "A", "B", "A"]
 
-combined = zip(scores, grades)
-# combined = zip(grades, scores)
-combined_list = list(combined)
-combined_dict = dict(combined_list)
-print(combined)       # <zip object at 0x1023a9600>
-print(combined_list)  # [(90, 'A'), (86, 'B'), (75, 'C'), (91, 'A'), (62, 'D'), (99, 'A'), (88, 'B'), (90, 'A')]
-print(combined_dict)  # {90: 'A', 86: 'B', 75: 'C', 91: 'A', 62: 'D', 99: 'A', 88: 'B'}
+# combined = zip(scores, grades)
+# # combined = zip(grades, scores)
+# combined_list = list(combined)
+# combined_dict = dict(combined_list)
+# print(combined)       # <zip object at 0x1023a9600>
+# print(combined_list)  # [(90, 'A'), (86, 'B'), (75, 'C'), (91, 'A'), (62, 'D'), (99, 'A'), (88, 'B'), (90, 'A')]
+# print(combined_dict)  # {90: 'A', 86: 'B', 75: 'C', 91: 'A', 62: 'D', 99: 'A', 88: 'B'}
 
+# my_list = [expression for member in iterable]
+# with optional if statement
+# my_list = [expression for member in iterable if condition]
+
+ls = [1,2,3,4,5,6,7,8,9,10]
+
+# new_ls = [el for el in ls]
+# new_ls = [el for el in ls if el < 7] # [1, 2, 3, 4, 5, 6]
+# new_ls = list(filter(lambda x: x < 7, ls)) # [1, 2, 3, 4, 5, 6]
+# new_ls = list(map(lambda x: x ** 2, ls))
+# new_ls = [el ** 2 for el in ls]
+# new_ls = [el ** 2 for el in ls if el % 2 == 0]
+
+
+# print(new_ls)
+# print(new_ls == ls)
+# print(new_ls is ls)
+
+# long_ls = [item for item in range(0, 1000)]
+# from random import randint
+# random_ls = [randint(0, 100) for member in range(1, 101)]
+
+# print(random_ls)
+
+# a dictionary that maps numbers to the square of the number
+# number_dict = {num: num**2 for num in range(5)}
+# print(number_dict)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+# nums = [-5, 11, 10, 14]
+# chars = ['f', 'g', 'g', 'y', 'l']
+
+# print({key: val for key, val in zip(nums, chars)}) # {-5: 'f', 11: 'g', 10: 'g', 14: 'y'}
+# print({key: val for key, val in enumerate(nums)}) # {0: -5, 1: 11, 2: 10, 3: 14}
