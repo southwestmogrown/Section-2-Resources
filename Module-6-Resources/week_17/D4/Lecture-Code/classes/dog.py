@@ -54,7 +54,7 @@ dogs_ls = [("Pepper", "Mutt", "Smedium", 3), ("Daisy", "Mutt", "Medium", 0.5)]
 
 dogs = Dog.dog_factory(dogs_ls)
 
-print(dogs)
+# print(dogs)
 
 # Dog.say_hi(dogs)
 
