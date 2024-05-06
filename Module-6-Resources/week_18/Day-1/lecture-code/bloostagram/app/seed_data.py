@@ -37,7 +37,7 @@ posts = [
     "likes": 4,
   },
   {
-    id: 2,
+    "id": 2,
     "caption": "Napping alone is pretty awesome too...",
     "image":
       "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774555/pepper-mlem_iaspy9.jpg",
@@ -47,7 +47,7 @@ posts = [
     "likes": 2,
   },
   {
-    id: 3,
+    "id": 3,
     "caption": "Snoozin by the tree!",
     "image":
       "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774562/sleepy-holiday-daisy_sg8sol.jpg",
@@ -57,7 +57,7 @@ posts = [
     "likes": 8,
   },
   {
-    id: 4,
+    "id": 4,
     "caption": "Now THIS is a party!",
     "image":
       "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774546/happy-family_k9qd3h.jpg",
@@ -67,7 +67,7 @@ posts = [
     "likes": 3,
   },
   {
-    id: 5,
+    "id": 5,
     "caption": "I am good gurl!",
     "image":
       "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774546/baby-pep_jev7vx.jpg",
@@ -77,7 +77,7 @@ posts = [
     "likes": 1,
   },
   {
-    id: 6,
+    "id": 6,
     "caption": "Look who I saw at the lake today...",
     "image":
       "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774545/lake-boi_l4eyoa.jpg",
