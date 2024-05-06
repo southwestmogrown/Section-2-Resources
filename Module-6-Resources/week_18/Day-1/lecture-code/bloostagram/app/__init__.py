@@ -58,7 +58,7 @@ def test():
   return "Hello from test"
 
 
-@app.route('/all-posts', methods=["GET"])
+@app.route('/posts/', methods=["GET"])
 def all_posts():
   return render_template("posts.html", posts=posts)
   # return render_template("posts.html")
