@@ -60,7 +60,7 @@ def test():
 
 @app.route('/posts', methods=["GET"])
 def all_posts():
-  return render_template("posts.html", posts=posts)
+  return render_template("posts.html", posts=posts, page_type="posts")
   # return render_template("posts.html")
 
 @app.route('/posts/<int:post_id>')
@@ -71,7 +71,7 @@ def get_post_by_id(post_id):
 @app.route('/users/<int:user_id>/posts')
 def get_single_users_posts(user_id):
   user_posts = [post for post in posts if post["author"]["id"] == user_id]
-  return render_template("posts.html", posts=user_posts, id=user_id)
+  return render_template("posts.html", posts=user_posts, id=user_id, page_type="user")
 
 @app.route('/posts/<int:post_id>/delete', methods=["GET"])
 def delete_post(post_id):

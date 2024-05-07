@@ -3,7 +3,7 @@ from datetime import date
 bloo = {
   "id": 1,
   "name": "Blooregard Q. Kazoo",
-  'username': "Bloo-berry",
+  'username': "Bloo",
   'profile':
     "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774551/bloo_eou41m.jpg",
 }
@@ -11,7 +11,7 @@ bloo = {
 pepper = {
   "id": 2,
   "name": "Pepper Anne",
-  "username": "Pepper-oni",
+  "username": "Pepper",
   "profile":
     "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774546/baby-pep_jev7vx.jpg",
 }
@@ -19,7 +19,7 @@ pepper = {
 daisy = {
   "id": 3,
   "name": "Daisy Mae",
-  "username": "Daisy-doge",
+  "username": "Daisy",
   "profile":
     "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774562/sleepy-daisy_yxtrgr.jpg",
 }
