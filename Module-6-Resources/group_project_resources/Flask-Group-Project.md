@@ -15,8 +15,7 @@ already clones is also not allowed (if you cloned AirBnb already, Couchsurfing
 is too similar a site to clone!)
 
 
-[Link to Projects List in aA
-Open](https://open.appacademy.io/learn/js-py---feb-2023-cohort-1-online/week-19---docker--aws--and-microservices/project-planning-day-1)
+[Link to Projects List in Canvas](https://appacademy.instructure.com/courses/319/pages/start-group-project-2?module_item_id=56682)
 
 
 The following requirements are necessary to pass the Group Flask Project:
