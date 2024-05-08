@@ -24,7 +24,7 @@
             <h2 style="color: green">{{ post.author.username }}</h2>
           {% endif %}
         </div>
-        <h3>{{ post.date.strftime("%B %-d, %Y at %-I:%M %p") }}</h3>
+        <h3>{{ post.created_at.strftime("%B %-d, %Y at %-I:%M %p") }}</h3>
       </div>
       <div>
         <a href="/posts/{{ post.id }}">
