@@ -64,10 +64,10 @@ daisy_posts = [
 
 
 with app.app_context():
-  db.drop_all()
-  print("Dropped all tables")
-  db.create_all()
-  print("Created all tables")
+  # db.drop_all()
+  # print("Dropped all tables")
+  # db.create_all()
+  # print("Created all tables")
 
   for user in users:
     current_user = User(**user)

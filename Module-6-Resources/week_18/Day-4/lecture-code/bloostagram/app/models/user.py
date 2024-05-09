@@ -14,3 +14,10 @@ class User(db.Model):
 
   posts = db.relationship("Post", back_populates="author")
   liked_posts = db.relationship("Post", secondary="likes", back_populates="user_likes")
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "username": self.id,
+      "posts": [post.to_dict(from_author=True) for post in self.posts]
+    }

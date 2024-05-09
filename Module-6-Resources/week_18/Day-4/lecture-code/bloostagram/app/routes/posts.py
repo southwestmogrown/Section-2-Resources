@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, jsonify
 from ..forms import PostForm
 from datetime import datetime
 from ..models import db, User, Post
@@ -10,6 +10,7 @@ posts_router = Blueprint('posts', __name__, url_prefix='/posts')
 @posts_router.route("/", methods=["GET"])
 def all_posts():
   posts = Post.query.all()
+  print([post.to_dict() for post in posts])
   return render_template("posts.html", posts=posts, page_type="posts")
 
 
@@ -17,6 +18,11 @@ def all_posts():
 def get_post_by_id(post_id):
   post = Post.query.get(post_id)
   # post = [post for post in posts if post["id"] == post_id]
+  # print(post)
+  print(post.to_dict())
+  # print(jsonify(post))
+  # print(jsonify(post.to_dict()))
+  # return post.to_dict()
   return render_template("posts.html", posts=[post])
 
 

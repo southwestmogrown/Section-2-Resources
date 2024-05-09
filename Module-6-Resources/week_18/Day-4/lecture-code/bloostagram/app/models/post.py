@@ -14,10 +14,10 @@ class Post(db.Model):
   author = db.relationship("User", back_populates="posts")
   user_likes = db.relationship("User", secondary="likes", back_populates="liked_posts")
 
-  def to_dict(self):
+  def to_dict(self, from_author=False):
     return {
-      "author": self.author,
+      "author": self.author_id if from_author else self.author.to_dict(),
       "caption": self.caption,
       "image": self.image,
-      "date": self.created_at
+      "created_at": self.created_at
     }
