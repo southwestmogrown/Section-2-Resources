@@ -16,5 +16,4 @@ class User(db.Model):
   # Relationships
 
   posts = db.relationship("Post", back_populates="user")
-
   liked_posts = db.relationship("Post", secondary="likes", back_populates="user_likes")
