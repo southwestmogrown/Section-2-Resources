@@ -73,7 +73,7 @@ def seed():
 
 @seed_commands.command("undo")
 def undo():
-    undo_posts()
+    undo_users()
     print("All seeds undone!")
 ```
 

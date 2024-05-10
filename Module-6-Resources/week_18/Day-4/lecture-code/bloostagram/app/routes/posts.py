@@ -10,7 +10,7 @@ posts_router = Blueprint('posts', __name__, url_prefix='/posts')
 @posts_router.route("/", methods=["GET"])
 def all_posts():
   posts = Post.query.all()
-  print([post.to_dict() for post in posts])
+  # print([post.to_dict() for post in posts])
   return render_template("posts.html", posts=posts, page_type="posts")
 
 
