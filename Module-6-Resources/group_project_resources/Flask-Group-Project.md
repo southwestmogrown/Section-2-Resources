@@ -11,7 +11,7 @@ very well be your most complete clone site!
 
 You may not clone a project you have already cloned at App Academy.  You do want
 to have a diverse portfolio, so a site that is really similar to something you
-already clones is also not allowed (if you cloned AirBnb already, Couchsurfing
+already cloned is also not allowed (if you cloned AirBnb already, Couchsurfing
 is too similar a site to clone!)
 
 
