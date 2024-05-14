@@ -16,6 +16,16 @@
 
 ---
 
+
+## Today's Docker Topics
+
+- Container terminal commands
+- Networks
+- Bind Mounts & Volumes- 
+
+
+---
+
 ## Lecture Videos 1 (17 minutes)
 Watch:
 - Container Intro (12:00)
