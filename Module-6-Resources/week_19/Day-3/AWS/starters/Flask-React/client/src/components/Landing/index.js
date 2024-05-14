@@ -22,12 +22,12 @@ const Landing = () => {
     return(
         <div className="splash-container">
             <div>
-                <h1 className="splash-title">Patchstagram</h1>
+                <h1 className="splash-title">Bloostagram</h1>
                 <img className="splash-logo" 
-                    src="https://res.cloudinary.com/app-academy4/image/upload/v1647291502/Patchstagram/patch_hd_riobbp.png" 
+                    src="https://res.cloudinary.com/ddxcued5s/image/upload/v1709692225/bloostagram-logo-update.png" 
                     alt="cat-logo" 
                 />
-                <p className="splash-detail">The cat with so much to talk about, he needs his own social media site!</p>   
+                <p className="splash-detail">The dog with so much to talk about, he needs his own social media site!</p>   
             </div>
             <div className="login-container">
                 <form
@@ -47,7 +47,7 @@ const Landing = () => {
                             value={ selectedUser }
                         >
                             {users && Object.values(users).map((user) => (
-                                    <option key={ user.id } value={ user.id }>{ user.fullName }</option>
+                                    <option key={ user.id } value={ user.id }>{ user.username }</option>
                                         ))
                             }
                         </select>

@@ -13,10 +13,10 @@ const Navbar = () => {
             <div className="nav-content-container">
                 <div className="nav-logo-container">
                     <img className="nav-logo" 
-                        src="https://res.cloudinary.com/app-academy4/image/upload/v1647291502/Patchstagram/patch_hd_riobbp.png" 
+                        src="https://res.cloudinary.com/ddxcued5s/image/upload/v1709692225/bloostagram-logo-update.png" 
                         alt="cat-logo" 
                     />
-                    <h1 className="nav-title">Patchstagram</h1>
+                    <h1 className="nav-title">Bloostagram</h1>
                 </div>
                 <div className="nav-search">
                     <FaSearch className="nav-icon"/>
@@ -40,7 +40,7 @@ const Navbar = () => {
                         <FaRegHeart className="nav-icon"/>
                     </NavLink>
                 </div>
-                <h2>{ user?.fullName } is logged in!</h2>
+                <h2>{ user?.username } is logged in!</h2>
             </div>
         </div>
 )};

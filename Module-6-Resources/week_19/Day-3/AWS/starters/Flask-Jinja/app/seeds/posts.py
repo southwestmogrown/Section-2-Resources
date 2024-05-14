@@ -10,8 +10,8 @@ from datetime import date
 def seed_posts(all_users):
  
     post1 = Post(
-        caption= "Napping Outside is always fun...",
-        image= "https://res.cloudinary.com/app-academy4/image/upload/v1647912033/Patchstagram/IMG_3394_fktg48.jpg",
+        caption= "Naptime photobomb",
+        image= "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774562/daisy-bloo-photobomb_avrsia.jpg",
         post_date= fake.date_between(start_date='-1y', end_date='today'),
         user= choice(all_users),
         post_likes= sample(all_users, randint(0, len(all_users))),
@@ -19,15 +19,15 @@ def seed_posts(all_users):
 
     post2 = Post(
         caption= "Napping inside is pretty awesome too...",
-        image= "https://res.cloudinary.com/app-academy4/image/upload/v1647912403/Patchstagram/64865942444__2B7B1A74-ECAF-4798-BEAB-D4890B7164C4_hnmowy.jpg",
+        image= "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774551/sleepy-cozy-family_wxchs0.jpg",
         post_date= fake.date_between(start_date='-1y', end_date='today'),
         user= choice(all_users),
         post_likes= sample(all_users, randint(0, len(all_users))),
     )
 
     post3 = Post(
-        caption= "I like my fish",
-        image= "https://res.cloudinary.com/app-academy4/image/upload/v1647912006/Patchstagram/IMG_3437_u2frrk.jpg",
+        caption= "mlem...",
+        image= "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774555/pepper-mlem_iaspy9.jpg",
         post_date= fake.date_between(start_date='-1y', end_date='today'),
         user= choice(all_users),
         post_likes= sample(all_users, randint(0, len(all_users))),
@@ -35,7 +35,7 @@ def seed_posts(all_users):
     
     post4 = Post(
         caption= "Now THIS is a party!",
-        image= "https://res.cloudinary.com/app-academy4/image/upload/v1647912056/Patchstagram/IMG_3389_i6czzx.jpg",
+        image= "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774551/sleepy-boi_sxrfek.jpg",
         post_date= fake.date_between(start_date='-1y', end_date='today'),
         user= choice(all_users),
         post_likes= sample(all_users, randint(0, len(all_users))),
@@ -43,15 +43,15 @@ def seed_posts(all_users):
 
     post5 = Post(
         caption= "This punk stole my tent! ⛺️",
-        image= "https://res.cloudinary.com/app-academy4/image/upload/v1647912094/Patchstagram/IMG_3211_sy5wcy.jpg",
+        image= "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774551/peek_ciduyj.jpg",
         post_date= fake.date_between(start_date='-1y', end_date='today'),
         user= choice(all_users),
         post_likes= sample(all_users, randint(0, len(all_users))),
     )
 
     post6 = Post(
-        caption= "Look who I saw outside today...",
-        image= "https://res.cloudinary.com/app-academy4/image/upload/v1684860951/Patchstagram/Mimi1_lxltmk.png",
+        caption= "Look who I saw at the lake today...",
+        image= "https://res.cloudinary.com/ddxcued5s/image/upload/v1712774545/lake-boi_l4eyoa.jpg",
         post_date= fake.date_between(start_date='-1y', end_date='today'),
         user= choice(all_users),
         post_likes= sample(all_users, randint(0, len(all_users))),
