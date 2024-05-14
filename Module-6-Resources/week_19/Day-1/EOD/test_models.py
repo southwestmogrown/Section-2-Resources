@@ -3,7 +3,7 @@ from app import app
 
 with app.app_context():
   # Week 18 D3 EOD code
-  user1 = User.query.get(1)
+  # user1 = User.query.get(1)
   # print([post.content for post in user1.posts])
   # new_post = Post(content="This is my second post")
   # new_post.user = user1
@@ -22,5 +22,12 @@ with app.app_context():
   #   for user in post.user_likes:
   #     print(f"\t{user.username}")
 
-  user1.posts = []
+  # user1.posts = []
+
+  # Self referential relationships
+  user1 = User.query.get(1)
+  user2 = User.query.get(2)
+  # user1.followers.append(user2)
+  user1.following.append(user2)
+
   db.session.commit()
