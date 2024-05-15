@@ -14,7 +14,7 @@ const Navbar = () => {
                 <div className="nav-logo-container">
                     <img className="nav-logo" 
                         src="https://res.cloudinary.com/ddxcued5s/image/upload/v1709692225/bloostagram-logo-update.png" 
-                        alt="cat-logo" 
+                        alt="dog-logo" 
                     />
                     <h1 className="nav-title">Bloostagram</h1>
                 </div>
