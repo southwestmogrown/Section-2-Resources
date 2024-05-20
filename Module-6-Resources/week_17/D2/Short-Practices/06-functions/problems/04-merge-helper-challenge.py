@@ -8,31 +8,13 @@
 # Implement the `merge_sort` function with the `merge` helper function.
 
 # Write your code here.
-def merge_sort(list):
-    if len(list) > 1:
-        mid = len(list)//2
-        lower_half = merge_sort(list[:mid])
-        upper_half = merge_sort(list[mid:])
-        return merge(lower_half, upper_half)
-    return list
+def merge_sort(lst):
+    # Call merge somewhere in here
+    pass
 
-def merge(lower, upper):
-    i = j = 0
-    temp = []
-    while i < len(lower) or j < len(upper):
-        if i == len(lower):
-            temp.append(upper[j])
-            j+=1
-        elif j == len(upper):
-            temp.append(lower[i])
-            i+=1
-        elif lower[i] < upper[j]:
-            temp.append(lower[i])
-            i+=1
-        else:
-            temp.append(upper[j])
-            j+=1
-    return temp
+def merge(first_half, second_half):
+    # Merge logic goes here
+    pass
 
 lst = [5, 2, 38, 91, 16, 427]
 

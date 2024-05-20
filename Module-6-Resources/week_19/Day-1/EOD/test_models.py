@@ -25,9 +25,3 @@ with app.app_context():
   # user1.posts = []
 
   # Self referential relationships
-  user1 = User.query.get(1)
-  user2 = User.query.get(2)
-  # user1.followers.append(user2)
-  user1.following.append(user2)
-
-  db.session.commit()

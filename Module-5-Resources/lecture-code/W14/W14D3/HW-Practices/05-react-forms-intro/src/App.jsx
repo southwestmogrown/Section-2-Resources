@@ -1,7 +1,7 @@
-import ContactUs from "./ContactUs";
-
 function App() {
-  return <ContactUs />;
+  return (
+    <h1>Hello from App</h1>
+  );
 }
 
 export default App;

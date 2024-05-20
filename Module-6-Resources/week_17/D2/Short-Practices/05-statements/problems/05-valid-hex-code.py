@@ -5,21 +5,6 @@
 # from A-F. All alphabetic characters may be uppercase or lowercase.
 
 # Write your function here.
-def is_valid_hex_code(str):
-  char_list = ['a', 'b', 'c', 'd', 'e', 'f']
-  if (str[0] != "#" or len(str) != 7):
-    return False
-  
-  i = 1
-  while i < len(str):
-    char = str[i].lower()
-    
-    if not char.isdigit():
-      if char not in char_list:
-        return False
-    i += 1
-  return True  
-  
 
 
 print(is_valid_hex_code("#CD5C5C"))  #> True

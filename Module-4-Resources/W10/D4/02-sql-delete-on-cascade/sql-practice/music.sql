@@ -1,6 +1,6 @@
 PRAGMA foreign_keys = ON;
-DROP TABLE IF EXISTS bands;
 DROP TABLE IF EXISTS musicians;
+DROP TABLE IF EXISTS bands;
 CREATE TABLE bands (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name VARCHAR(100)
@@ -11,7 +11,7 @@ CREATE TABLE musicians (
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100),
   band_id INTEGER,
-  FOREIGN KEY (band_id) REFERENCES bands(id) ON DELETE CASCADE
+  FOREIGN KEY (band_id) REFERENCES bands(id)
 );
 INSERT INTO bands
 VALUES (1, 'The Falling Box'),

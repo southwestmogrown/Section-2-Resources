@@ -2,12 +2,6 @@
 # uppercase characters in the string.
 
 # Write your solution here.
-def add_upper(s):
-  res = ""
-  for c in s:
-    if c.isupper():
-      res += c
-  return res
 
 
 print(add_upper("ApPlE"))        #> APE

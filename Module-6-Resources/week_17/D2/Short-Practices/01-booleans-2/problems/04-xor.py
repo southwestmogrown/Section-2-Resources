@@ -5,8 +5,7 @@
 # https://wiki.python.org/moin/BitwiseOperators
 
 # Write your function here.
-def xor(a1, a2):
-    return a1 ^ a2
+
 
 print(xor(False, False))   #>  False
 print(xor(True, False))   #>  True

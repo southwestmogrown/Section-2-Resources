@@ -2,8 +2,7 @@
 # the given value; otherwise return `False`.
 
 # Write your function here.
-def length_list(l, n):
-    return len(l) == n
+
 
 print(length_list([], 1))   #>  False
 print(length_list([], 0))   #>  True

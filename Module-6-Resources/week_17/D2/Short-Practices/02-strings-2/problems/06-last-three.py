@@ -3,8 +3,6 @@
 # case).
 
 # Write your function here.
-def last_three(str, suffix):
-    return str.lower()[-3:] == suffix
 
 print(last_three("Power", "wer"))  #> True
 print(last_three("Application", "App"))   #> False

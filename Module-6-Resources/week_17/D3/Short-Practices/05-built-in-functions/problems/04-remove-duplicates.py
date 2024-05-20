@@ -42,28 +42,7 @@ phones = [
 ]
 
 # Write your code here.
-# def get_unique_models(phone_list):
-#     seen = set()
-#     unique_models = []
-#     for phone in phone_list:
-#         if phone["brand"] in seen:
-#             continue
-#         seen.add(phone["brand"])
-#         unique_models.append(phone)
-#     return unique_models
 
-# def map_to_names(phone_list):
-#     names = []
-#     for phone in phone_list:
-#         names.append(phone["model"])
-#     return names
-
-def get_unique_models(phone_list):
-  seen = set()
-  return filter(lambda phone: seen.add(phone["model"]) is None if phone["model"] not in seen else False, phone_list)
-
-def map_to_names(phone_list):
-  return list(map(lambda phone: phone["model"], phone_list))
 
 unique_models = list(get_unique_models(phones))
 print(unique_models)                # iPhone 13 Pro, Galaxy S22+, Pixel 6 (dictionaries)

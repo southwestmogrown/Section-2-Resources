@@ -1,8 +1,3 @@
-from home.chores import takeOutTrash, sweepFloors
-from office.work import code, attendMeeting, updateSchedule
-from office.idle import chat, getWater, useSocialMedia
-from home.cook import doDishes, washVegetables, chopMeat
-from home.leisure import playGames, petDog, readBook, takeNap
 def morningMenu():
   print("Starting the day off...")
   while True:

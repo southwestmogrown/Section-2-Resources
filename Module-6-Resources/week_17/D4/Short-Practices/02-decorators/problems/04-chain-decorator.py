@@ -18,30 +18,7 @@
 # Finally, be sure to decorate num function using the decorator syntax.
 
 # Write your function here.
-def chain_decorator(func):
-    def outer_wrapper(*args, **kwargs):
-        def inner_wrapper(*args, **kwargs):
-            x = func(*args, **kwargs)
-            return x * 3
-        x = inner_wrapper(*args, **kwargs)
-        return x * x
-    return outer_wrapper
 
-def square_decorator(func):
-    def wrapper(a, b):
-        x = func(a, b)
-        return x ** 2
-    return wrapper
-
-def multiply_by_three(func):
-    def wrapper(a, b):
-        x = func(a, b)
-        return x * 3
-    return wrapper
-
-@chain_decorator
-@square_decorator
-@multiply_by_three
 def num(a, b):
     return a + b
 

@@ -12,10 +12,7 @@ list3 = [2, 3]
 # compare with JavaScripts "==="?
 
 # Compare "x" with itself
-print(x == x)
 # Compare "x" with "y"
-print(x == y)
 # Compare "list1" with "list2"
-print(list1 == list2)
 # Compare "list1" with "list3"
-print(list1 == list3)
+

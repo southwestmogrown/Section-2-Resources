@@ -1,7 +1,6 @@
-import { createStore, applyMiddleware, compose, combineReducers } from "redux";
-import thunk from "redux-thunk";
-import fruitReducer from "./fruitReducer";
-import articleReducer from "./articleReducer";
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import fruitReducer from './fruitReducer';
+import articleReducer from './articleReducer';
 
 /*
 This is the most important part of this file. You will add your reducers here to
@@ -10,7 +9,7 @@ into one big reducer function.
 */
 const rootReducer = combineReducers({
   fruitState: fruitReducer,
-  articleState: articleReducer,
+  articleState: articleReducer
 });
 
 /*
@@ -34,9 +33,7 @@ if (import.meta.env.MODE !== "production") {
   const logger = (await import("redux-logger")).default;
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  enhancer = composeEnhancers(applyMiddleware(thunk, logger));
-} else {
-  enhancer = applyMiddleware(thunk);
+  enhancer = composeEnhancers(applyMiddleware(logger));
 }
 
 /*

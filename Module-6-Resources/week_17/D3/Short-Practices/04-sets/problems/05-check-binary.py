@@ -7,9 +7,7 @@
 #     set1 = set(str)
 #     return set1.issubset({ "0", "1" })
 
-def check_binary(str):
-  set1 = set(str)
-  return set1 == { "0", "1"} or set1 == { "1" } or set1 == { "0"}
+
 
 str1 = '1010001010010100101'
 str2 = '1010010015010101010'

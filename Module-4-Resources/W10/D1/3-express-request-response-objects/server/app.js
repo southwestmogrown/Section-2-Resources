@@ -1,5 +1,5 @@
 // DO NOT EDIT - Initialize Express, handle JSON requests
-const express = require("express");
+const express = require('express');
 const app = express();
 
 app.use(express.json());
@@ -10,10 +10,7 @@ app.use(express.json());
  *     Route: /version
  *     Response (Text): "1.0.0"
  */
-
-app.get("/version", (req, res) => {
-  res.send("1.0.0");
-});
+// Your code here 
 
 /**
  *  Basic Phase 2 - Route param and JSON response
@@ -31,20 +28,7 @@ app.get("/version", (req, res) => {
  *  Hint: Use your name, birth date and favorite movies (as strings in the code)
  *  combined with the id sent as a route parameter in the url
  */
-
-app.get("/viewers/:id", (req, res) => {
-  const id = req.params.id;
-
-  const user = {
-    id,
-    firstName: "Shane",
-    lastName: "Wilkey",
-    birthDate: "02/25/1982",
-    favoriteMovies: ["Empire Stikes Back", "O' Brother Where Art Thou"],
-  };
-
-  res.json(user);
-});
+// Your code here 
 
 /** Basic Phase 3 - Query params in URL
  *      Method: GET
@@ -63,14 +47,7 @@ app.get("/viewers/:id", (req, res) => {
  *          message required
  *          message required
  */
-
-app.get("/info", (req, res) => {
-  if (req.query.message) {
-    res.send(req.query.message);
-  } else {
-    res.send("message required");
-  }
-});
+// Your code here 
 
 /**
  *  IMPORTANT: Scroll to the top for basic phases.
@@ -104,7 +81,7 @@ app.get("/info", (req, res) => {
  *      Alternate response object:
  *          { "id": 98765432, "name": "Honey Sweet", "year": 1967, "isFavorite": false }
  */
-// Your code here
+// Your code here 
 
 /**
  *  Advanced Bonus Phase B - Research how to return static
@@ -121,12 +98,12 @@ app.get("/info", (req, res) => {
  *
  *      Test route: /logo.png
  */
-// Your code here
+// Your code here 
 
 // DO NOT EDIT - Set port and listener
 if (require.main === module) {
-  const port = 8000;
-  app.listen(port, () => console.log("Server is listening on port", port));
+    const port = 8000;
+    app.listen(port, () => console.log('Server is listening on port', port));
 } else {
-  module.exports = app;
+    module.exports = app;
 }

@@ -1,13 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
-import { HoroscopeProvider } from "./context/HoroscopeContext";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+import { HoroscopeContext } from './context/HoroscopeContext';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HoroscopeProvider>
+    <HoroscopeContext.Provider value={{ sign: 'Leo' }}>
       <App />
-    </HoroscopeProvider>
+    </HoroscopeContext.Provider>
   </React.StrictMode>
 );
