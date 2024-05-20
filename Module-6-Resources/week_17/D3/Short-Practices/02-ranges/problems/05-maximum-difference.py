@@ -1,0 +1,31 @@
+# Given a list of integers, return the difference between the largest and
+# smallest integers in the list.
+
+# Write your function here.
+def find_min(ls):
+  min = float('inf')
+  for i in range(len(ls)):
+    if ls[i] < min:
+      min = ls[i]
+  return min
+
+def find_max(ls):
+  max = float('-inf')
+  for i in range(len(ls)):
+    if ls[i] > max:
+      max = ls[i]
+  return max
+
+def difference(ls):
+  return find_max(ls) - find_min(ls)
+
+# print(find_min([1]))
+
+print(difference([10, 15, 20, 2, 10, 6]))
+# 20 - 2 = 18
+
+print(difference([-3, 4, -9, -1, -2, 15]))
+# 15 - (-9) = 24
+
+print(difference([4, 17, 12, 2, 10, 2]))
+# 17 - 2 = 15
