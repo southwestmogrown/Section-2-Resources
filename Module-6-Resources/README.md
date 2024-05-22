@@ -9,3 +9,6 @@ App Academy's Module 6 introduces a new language - Python! Here's an overview of
 - Week 17: Python syntax and data structures
 - Week 18: Building a backend server with Python
 - Week 19: Docker
+
+
+Let's learn some python!
