@@ -1,11 +1,17 @@
 const express = require("express");
-
 const app = express();
+const demoRouter = require("./routes/demoRoutes");
 
 app.use(express.json());
 // app.use('/users', (req, res) => {
 //   console.log(req)
 // })
+
+app.use("/demo",demoRouter)
+// app.use("/demo",demoRouter)
+// app.use("/demo",demoRouter)
+// app.use("/demo",demoRouter)
+// app.use("/demo",demoRouter)
 
 const printPath = (req, res, next) => {
   console.log(`path: ${req.path}`);
