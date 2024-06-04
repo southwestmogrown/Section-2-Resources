@@ -33,33 +33,64 @@ const checkUserInput2 = (req, res, next) => {
 
 const checkUserInput3 = (req, res, next) => {
   if (!req.body.stuff) {
-    res.send("Please include a stuff property.");
+    return res.send("Please include a stuff property.");
   }
   next();
 };
+
+app.get('/', printPath, checkUserInput3, (req, res) => {
+  res.send('hello from root')
+})
 
 app.post('/', checkUserInput3, (req, res) => {
   res.send('hello from root')
 })
 
-app.use((req, res, next) => {
-  console.log('error test');
-  const error = 'There was an error :(';
-  // const error = new Error("whatever message")
-  next(error);
-});
+// app.use((req, res, next) => {
+//   console.log('error test');
+//   const error = 'There was an error :(';
+//   // const error = new Error("whatever message")
+//   next(error);
+// });
 
-app.get('/error', (req, res) => {
-  res.send("will not make it here")
+app.get('/users', (req, res) => {
+  res.send("hello from users route")
 })
+
+app.get('/albums', (req, res) => {
+  res.send("hello from albums route")
+})
+
+app.use((req, res, next) => {
+  const notFoundErr = new Error(`${req.path} was not found`);
+  notFoundErr.statusCode = 404;
+  next(notFoundErr)
+})
+
+// app.use((err, req, res, next) => {
+//   console.log(err)
+//   next()
+// })
+
+// app.get("/error", (req, res) => {
+//   res.send("hello from /error")
+// })
+
+// app.use((req, res, next) => {
+//   console.log('error test');
+//   const error = new Error('There was an error :(');
+//   error.statusCode = 401;
+//   next(error);
+// });
 
 app.use((err, req, res, next) => {
-  console.log(err)
-  next()
-})
-
-app.get("/error", (req, res) => {
-  res.send("hello from /error")
-})
+  console.log(err.message);
+  const status = err.statusCode || 500;
+  res.status(status);
+  res.json({
+      message: err.message || 'Something went wrong...',
+      status
+  });
+});
 
 app.listen(8000, () => console.log("Listening on port 8000..."))
