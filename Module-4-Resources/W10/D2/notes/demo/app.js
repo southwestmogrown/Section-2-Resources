@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
 const demoRouter = require("./routes/demoRoutes");
+require('dotenv').config()
+
+// console.log(process.env.MESSAGE)
+// console.log(process.env.DATABASE_URL)
 
 app.use(express.json());
+
 // app.use('/users', (req, res) => {
 //   console.log(req)
 // })
@@ -99,4 +104,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8000, () => console.log("Listening on port 8000..."))
+app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}...`))

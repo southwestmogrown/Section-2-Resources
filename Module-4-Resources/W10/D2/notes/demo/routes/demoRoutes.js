@@ -3,6 +3,7 @@ const router = express.Router();
 
 router.use((req, res, next) => {
   console.log("Passing through the Demo Router global middleware")
+  console.log(process.env.MESSAGE)
   next()
 })
 
