@@ -14,8 +14,6 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     username VARCHAR(50) NOT NULL UNIQUE,
-    first_name VARCHAR(50),
-    last_name VARCHAR(100),
     email VARCHAR(100) NOT NULL UNIQUE,
     user_password VARCHAR(50) NOT NULL,
     created_at DATE NOT NULL,
