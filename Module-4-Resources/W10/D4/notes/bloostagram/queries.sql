@@ -53,8 +53,36 @@
 -- SELECT user_id % image_id
 -- FROM posts;
 
-SELECT caption AS temp, title AS apple
-FROM posts;
+-- SELECT caption AS temp, title AS apple
+-- FROM posts;
 
-SELECT caption, title
-FROM posts;
+-- SELECT caption, title
+-- FROM posts;
+
+-- SELECT posts.title, posts.caption, images.id, images.image_url
+-- FROM posts
+-- JOIN images
+-- ON posts.image_id = images.id
+-- WHERE image_id BETWEEN 3 AND 11;
+
+-- SELECT users.username, posts.title, posts.caption, posts.image_id
+-- FROM users
+-- JOIN posts
+-- ON posts.user_id = users.id
+-- ORDER BY username;
+
+-- SELECT username, posts.title, posts.caption, image_id, images.image_url
+-- FROM users
+-- JOIN posts
+-- ON posts.user_id = users.id
+-- JOIN images
+-- ON posts.image_id = images.id
+-- ORDER BY username;
+
+SELECT albums.name, images.image_url
+FROM albums
+JOIN album_images
+ON album_images.album_id = albums.id
+JOIN images
+ON album_images.image_id = images.id
+ORDER BY albums.name;
