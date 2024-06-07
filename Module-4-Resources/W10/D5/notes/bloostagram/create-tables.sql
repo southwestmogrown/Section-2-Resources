@@ -3,10 +3,10 @@ PRAGMA foreign_keys = ON;
 
 -- .headers = ON; -- older syntax
 -- .mode column = ON; -- older syntax
-.mode box = ON; -- appears to be deprecated on newer versions ^4 and above
+.mode box = ON; -- appears deprecated on newer versions ^4 and above
 -- .mode box -- works for versions above ^3.37.2
 
-
+DROP TABLE IF EXISTS ratings;
 DROP TABLE IF EXISTS album_images;
 DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS likes;
@@ -73,3 +73,9 @@ CREATE TABLE album_images (
     image_id INTEGER REFERENCES images(id) ON DELETE CASCADE
 );
 
+
+CREATE TABLE ratings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    image_id INTEGER REFERENCES images(id) ON DELETE CASCADE,
+    rating INTEGER CHECK (rating < 6 AND rating > 0)
+);
