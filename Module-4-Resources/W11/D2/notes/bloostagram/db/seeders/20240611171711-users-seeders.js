@@ -19,25 +19,35 @@ module.exports = {
           password: "password1",
           bio: "Really long bio",
           profilePic: "someurl.com",
+          email: "something@mail.com",
         },
         {
           username: "Briana",
           password: "password1",
           bio: "Really long bio",
           profilePic: "someurl.com",
+          email: "something@mail.com",
         },
         {
           username: "Brad",
           password: "password1",
           bio: "Really long bio",
           profilePic: "someurl.com",
+          email: "something@mail.com",
         },
         {
           username: "Brandon",
           password: "password1",
           bio: "Really long bio",
           profilePic: "someurl.com",
+          email: "something@mail.com",
         },
+        // {
+        //   username: "!!!@#$",
+        //   password: "password1",
+        //   bio: "Really long bio",
+        //   profilePic: "someurl.com",
+        // },
       ],
       { validate: true }
     );

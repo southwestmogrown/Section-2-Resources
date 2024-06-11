@@ -18,7 +18,20 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
         validate: {
-          len: { min: 2 },
+          len: {
+            args: [2, 75],
+            msg: "name must be between 2 and 20 characters",
+          },
+          noSpecialChars(value) {
+            const specialChars = "!@#$%^&*()-=_+<>?/]";
+            for (let char of value) {
+              if (specialChars.includes(char)) {
+                throw new Error(
+                  "You can not use these characters: !@#$%^&*()-=_+<>?/]"
+                );
+              }
+            }
+          },
         },
       },
       password: {
@@ -27,6 +40,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       bio: DataTypes.TEXT,
       profilePic: DataTypes.STRING,
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
     },
     {
       sequelize,
