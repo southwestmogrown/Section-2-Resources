@@ -9,11 +9,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Album.belongsToMany(models.Image, {
-        through: models.AlbumImage,
-        foreignKey: "albumId",
-        otherKey: "imageId",
-      });
     }
   }
   Album.init(
