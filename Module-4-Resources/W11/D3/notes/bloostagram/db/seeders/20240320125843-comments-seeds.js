@@ -16,10 +16,10 @@ module.exports = {
      */
     await Comment.bulkCreate(
       [
-        { userId: 2, postId: 1, body: "This is great" },
-        { userId: 1, postId: 5, body: "This is nice" },
-        { userId: 3, postId: 10, body: "Cool pic!" },
-        { userId: 1, postId: 5, body: "How is this possible?!" },
+        { body: "This is great" },
+        { body: "This is nice" },
+        { body: "Cool pic!" },
+        { body: "How is this possible?!" },
       ],
       { validate: true }
     );
