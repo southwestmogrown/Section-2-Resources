@@ -1,6 +1,6 @@
 "use strict";
 
-const { Album } = require("../models");
+const { Like } = require("../models");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -14,16 +14,19 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await Album.bulkCreate(
+    await Like.bulkCreate(
       [
-        { userId: 1, name: "album 1" },
-        { userId: 1, name: "album 2" },
-        { userId: 2, name: "album 3" },
-        { userId: 2, name: "album 4" },
-        { userId: 3, name: "album 5" },
-        { userId: 3, name: "album 6" },
+        { userId: 1, postId: 6 },
+        { userId: 1, postId: 1 },
+        { userId: 1, postId: 3 },
+        { userId: 2, postId: 12 },
+        { userId: 2, postId: 5 },
+        { userId: 2, postId: 1 },
+        { userId: 3, postId: 1 },
+        { userId: 3, postId: 13 },
+        { userId: 3, postId: 7 },
       ],
-      { validate: true }
+      { valdate: true }
     );
   },
 
@@ -34,6 +37,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("Albums", null, {});
+    await queryInterface.bulkDelete("Likes", null, {});
   },
 };
