@@ -72,6 +72,15 @@ router.get("/:userId", async (req, res) => {
   res.json(user);
 });
 
+router.get("/:userId/posts", async (req, res) => {
+  const user = await User.findByPk(req.params.userId, {
+    attributes: ["username", "id"],
+    include: { model: Post },
+  });
+
+  res.json(user);
+});
+
 router.post("/build", async (req, res) => {
   const { username, firstName, lastName, email, password } = req.body;
 
@@ -144,16 +153,6 @@ router.delete("/:userId", async (req, res) => {
   await userToDelete.destroy();
   res.json({
     message: `Succussfully deleted user with id ${req.params.userId}`,
-  });
-});
-
-router.post("/:userId/posts", async (req, res) => {
-  const { caption, title } = req.body;
-
-  const newPost = await Post.create({
-    caption,
-    title,
-    userId: req.params.userId,
   });
 });
 
