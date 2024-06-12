@@ -2,7 +2,7 @@ const express = require("express");
 const { Op } = require("sequelize");
 const router = express.Router();
 
-const { User, Post } = require("../db/models");
+const { User, Post, Like, Comment } = require("../db/models");
 
 // router.get("/", async (req, res) => {
 //   const allUsers = await User.findAll();
@@ -75,7 +75,12 @@ router.get("/:userId", async (req, res) => {
 router.get("/:userId/posts", async (req, res) => {
   const user = await User.findByPk(req.params.userId, {
     attributes: ["username", "id"],
-    include: { model: Post },
+    // include: Post,
+    // include: [Post, Like, Comment],
+    include: {
+      model: Post,
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+    },
   });
 
   res.json(user);
