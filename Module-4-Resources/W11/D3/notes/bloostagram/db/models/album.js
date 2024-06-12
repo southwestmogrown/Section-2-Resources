@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Album.init(
     {
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,

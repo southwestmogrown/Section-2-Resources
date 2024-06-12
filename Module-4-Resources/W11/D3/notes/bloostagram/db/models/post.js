@@ -13,6 +13,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   Post.init(
     {
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      imageId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       caption: {
         type: DataTypes.STRING,
         allowNull: false,

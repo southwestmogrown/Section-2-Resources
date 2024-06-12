@@ -2,7 +2,7 @@ const express = require("express");
 const { Op } = require("sequelize");
 const router = express.Router();
 
-const { User } = require("../db/models");
+const { User, Post } = require("../db/models");
 
 // router.get("/", async (req, res) => {
 //   const allUsers = await User.findAll();
@@ -70,6 +70,91 @@ router.get("/:userId", async (req, res) => {
   });
 
   res.json(user);
+});
+
+router.post("/build", async (req, res) => {
+  const { username, firstName, lastName, email, password } = req.body;
+
+  const newUser = User.build({
+    username,
+    firstName,
+    lastName,
+    email,
+    password,
+  });
+
+  await newUser.validate();
+  await newUser.save();
+
+  const safeObj = {
+    username: newUser.username,
+    id: newUser.id,
+  };
+
+  res.json({
+    msg: "Success",
+    user: safeObj,
+  });
+});
+
+router.post("/create", async (req, res) => {
+  const { username, firstName, lastName, email, password } = req.body;
+
+  const newUser = await User.create({
+    username,
+    firstName,
+    lastName,
+    email,
+    password,
+  });
+
+  const safeObj = {
+    username: newUser.username,
+    id: newUser.id,
+  };
+
+  res.json({
+    msg: "Success",
+    user: safeObj,
+  });
+});
+
+router.put("/:userId", async (req, res) => {
+  const { username, firstName, lastName, email } = req.body;
+  const userToUpdate = await User.findByPk(req.params.userId);
+  // userToUpdate.update({ ...req.body });
+  // using set method
+  if (username !== undefined) userToUpdate.set({ username: username });
+  // using direct object key value reassignment
+  if (firstName !== undefined) userToUpdate.firstName = firstName;
+  if (lastName !== undefined) userToUpdate.lastName = lastName;
+  if (email !== undefined) userToUpdate.email = email;
+
+  await userToUpdate.save();
+
+  res.json({
+    msg: "Successfully updated the user",
+    userToUpdate,
+  });
+});
+
+router.delete("/:userId", async (req, res) => {
+  const userToDelete = await User.findByPk(req.params.userId);
+
+  await userToDelete.destroy();
+  res.json({
+    message: `Succussfully deleted user with id ${req.params.userId}`,
+  });
+});
+
+router.post("/:userId/posts", async (req, res) => {
+  const { caption, title } = req.body;
+
+  const newPost = await Post.create({
+    caption,
+    title,
+    userId: req.params.userId,
+  });
 });
 
 module.exports = router;
