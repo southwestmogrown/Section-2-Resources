@@ -49,4 +49,22 @@ router.get("/eager/:id", async (req, res) => {
   res.json(album);
 });
 
+// Add method => Database record instance method
+router.post("/:albumId/images/:imageId", async (req, res) => {
+  const album = await Album.findByPk(req.params.albumId);
+
+  await album.addImage(req.params.imageId);
+
+  const images = await album.getImages({
+    attributes: ["imageUrl"],
+  });
+
+  const albumJson = album.toJSON();
+  const jsonImages = images.map((image) => image.toJSON());
+  albumJson.Images = [];
+  jsonImages.forEach((image) => albumJson.Images.push(image.imageUrl));
+
+  res.json(albumJson);
+});
+
 module.exports = router;

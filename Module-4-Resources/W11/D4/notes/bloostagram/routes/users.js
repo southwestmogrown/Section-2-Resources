@@ -140,4 +140,43 @@ router.delete("/:id", async (req, res) => {
   res.json({ message: `Successfully deleted user with id ${id}` });
 });
 
+// Getter methods => Database record instance method
+router.get("/:userId/likes", async (req, res) => {
+  const user = await User.findByPk(req.params.userId, {
+    attributes: ["id", "username"],
+  });
+
+  const likes = await user.getLikes();
+  const comments = await user.getComments({
+    attributes: ["body"],
+  });
+
+  console.log(user);
+  const jsonUser = await user.toJSON();
+  const jsonLikes = likes.map((like) => like.toJSON());
+  const jsonComments = comments.map((comment) => comment.toJSON());
+
+  jsonUser.Likes = jsonLikes;
+  jsonUser.Comments = jsonComments;
+
+  res.json(jsonUser);
+});
+
+// Create methods => Database record instance method
+router.post("/:id/posts", async (req, res) => {
+  const user = await User.findByPk(req.params.id, {
+    attributes: ["id", "username"],
+  });
+
+  // const newPost = await user.createPost({
+  //   title: "New Post",
+  //   caption: "Good Times",
+  //   imageId: 3,
+  // });
+
+  const newPost = await user.createPost({ ...req.body });
+
+  res.json({ user, newPost });
+});
+
 module.exports = router;
