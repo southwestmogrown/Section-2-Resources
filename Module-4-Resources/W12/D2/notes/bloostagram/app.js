@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const { User, Post } = require("./db/models");
+const { Op } = require("sequelize");
 
 const usersRouter = require("./routes/users");
 const albumsRouter = require("./routes/albums");
@@ -72,6 +73,40 @@ app.get("/pagination", async (req, res) => {
   pagination.offset = size * (page - 1);
 
   const posts = await Post.findAll({ ...pagination });
+
+  res.json(posts);
+});
+
+app.get("/queries", async (req, res) => {
+  const { title, imageId, userId } = req.query;
+
+  const queryObj = {
+    where: {},
+    include: [],
+  };
+
+  if (title) {
+    queryObj.where.title = {
+      [Op.substring]: title,
+    };
+  }
+
+  if (imageId) {
+    queryObj.where.imageId = {
+      [Op.gte]: imageId,
+    };
+  }
+
+  if (userId) {
+    queryObj.include.push({
+      model: User,
+      where: {
+        id: userId,
+      },
+    });
+  }
+
+  const posts = await Post.findAll({ ...queryObj });
 
   res.json(posts);
 });
