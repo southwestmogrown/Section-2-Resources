@@ -38,22 +38,45 @@ app.use("/albums", albumsRouter);
 app.use("/aggregates", aggregatesRouter);
 app.use("/association-methods", associationMethodsRouter);
 
+// app.get("/pagination", async (req, res) => {
+//   let { size, page } = req.query;
+
+//   if (!page) page = 1;
+//   if (!size) size = 5;
+
+//   const pagination = {};
+
+//   if (size > 0 && page > 0) {
+//     pagination.limit = size;
+//     pagination.offset = size * (page - 1);
+//   }
+
+//   const posts = await Post.findAll({ ...pagination });
+
+//   res.json(posts);
+// });
+
+// covering edge cases
 app.get("/pagination", async (req, res) => {
   let { size, page } = req.query;
+  // console.log(typeof size);
+  size = Math.floor(+size); // => parseInt(size)
+  page = Math.floor(+page); // => parseInt(page)
+  // console.log(typeof size);
 
-  if (!page) page = 1;
-  if (!size) size = 5;
+  if (!page || typeof page === "NaN") page = 1;
+  if (!size || typeof size === "NaN") size = 5;
 
   const pagination = {};
 
   if (size > 0 && page > 0) {
     pagination.limit = size;
     pagination.offset = size * (page - 1);
+  } else {
+    (pagination.limit = 5), (pagination.offset = 0);
   }
 
   const posts = await Post.findAll({ ...pagination });
-  // console.log("size: ", typeof size);
-  // console.log("page: ", typeof page);
 
   res.json(posts);
 });
