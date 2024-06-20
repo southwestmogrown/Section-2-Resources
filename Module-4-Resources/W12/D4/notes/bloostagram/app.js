@@ -2,6 +2,8 @@ const express = require("express");
 require("dotenv").config();
 const { User, Post } = require("./db/models");
 const { Op } = require("sequelize");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 const usersRouter = require("./routes/users");
 const albumsRouter = require("./routes/albums");
@@ -111,5 +113,93 @@ app.get("/queries", async (req, res) => {
   res.json(posts);
 });
 
+const setTokenCookie = (res, user) => {
+  // Create the token.
+  const safeUser = {
+    id: user.id,
+    email: user.email,
+    username: user.username,
+  };
+  const token = jwt.sign(
+    { data: safeUser },
+    process.env.JWT_SECRET,
+    { expiresIn: parseInt(process.env.JWT_EXPIRES_IN) } // 604,800 seconds = 1 week
+  );
+
+  // Set the token cookie
+  res.cookie("token", token, {
+    maxAge: process.env.JWT_EXPIRES_IN * 1000, // maxAge in milliseconds
+    httpOnly: true,
+  });
+
+  return token;
+};
+
+app.post("/", async (req, res) => {
+  // user sign up
+  const { email, password, firstName, lastName, username } = req.body;
+  const hashedPassword = bcrypt.hashSync(password, 12);
+  const user = await User.create({
+    email,
+    username,
+    firstName,
+    lastName,
+    password: hashedPassword,
+  });
+
+  const safeUser = {
+    id: user.id,
+    email: user.email,
+    username: user.username,
+  };
+
+  await setTokenCookie(res, safeUser);
+
+  return res.json({
+    user: safeUser,
+  });
+});
+
+router.post("/", async (req, res, next) => {
+  const { credential, password } = req.body;
+
+  const user = await User.unscoped().findOne({
+    where: {
+      [Op.or]: {
+        username: credential,
+        email: credential,
+      },
+    },
+  });
+
+  if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
+    const err = new Error("Login failed");
+    err.status = 401;
+    err.title = "Login failed";
+    err.errors = { credential: "The provided credentials were invalid." };
+    return next(err);
+  }
+
+  const safeUser = {
+    id: user.id,
+    email: user.email,
+    username: user.username,
+  };
+
+  await setTokenCookie(res, safeUser);
+
+  return res.json({
+    user: safeUser,
+  });
+});
+
+router.delete("/", (_req, res) => {
+  res.clearCookie("token");
+  return res.json({ message: "success" });
+});
+
+app.use((err, req, res, next) => {
+  res.json(err);
+});
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${process.env.PORT}...`));
