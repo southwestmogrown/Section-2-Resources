@@ -62,6 +62,32 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "User",
+      defaultScope: {
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "email", "password"],
+        },
+      },
+      scopes: {
+        onlyUserNameAndId: {
+          attributes: ["id", "username"],
+          order: [["username", "DESC"]],
+        },
+        includeUserPosts(userId) {
+          const { Post } = require("../models");
+
+          return {
+            attributes: ["username", "id"],
+            include: {
+              model: Post,
+              where: {
+                userId: userId,
+              },
+              order: [["title", "ASC"]],
+              attributes: ["caption", "title"],
+            },
+          };
+        },
+      },
     }
   );
   return User;

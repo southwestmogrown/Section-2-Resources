@@ -6,7 +6,7 @@ const { User, Post } = require("../db/models");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const allUsers = await User.findAll();
+  const allUsers = await User.scope("onlyUserNameAndId").findAll();
 
   res.json(allUsers);
 });
@@ -177,6 +177,20 @@ router.post("/:id/posts", async (req, res) => {
   const newPost = await user.createPost({ ...req.body });
 
   res.json({ user, newPost });
+});
+
+router.get("/:userId/posts", async (req, res) => {
+  const user = await User.scope({
+    method: ["includeUserPosts", req.params.userId],
+  }).findByPk(req.params.userId);
+
+  res.json(user);
+});
+
+router.get("/:userId", async (req, res) => {
+  const user = await User.findByPk(req.params.userId);
+
+  res.json(user);
 });
 
 module.exports = router;
